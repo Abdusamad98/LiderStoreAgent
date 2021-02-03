@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/clients"
+        android:icon="@drawable/ic_clients_icon"
+        android:title="Clients" />
+
+    <item
+        android:id="@+id/chicken"
+        android:icon="@drawable/ic_chicken_icon"
+        android:title="Chicken" />
+
+    <item
+        android:id="@+id/sausage"
+        android:icon="@drawable/ic_sausage_icon"
+        android:title="Sausage" />
+
+    <item
+        android:id="@+id/milk"
+        android:icon="@drawable/ic_milk_icon"
+        android:title="Milk" />
+
+
+</menu>

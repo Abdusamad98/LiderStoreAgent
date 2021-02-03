@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/mainFragment"
+    android:id="@+id/nav_root">
+    <fragment
+        android:name="com.example.liderstoreagent.ui.screens.HomeFragment"
+        android:label="Agent oynasi"
+        tools:layout="@layout/home_fragment"
+        android:id="@+id/mainFragment" >
+        <action
+            android:id="@+id/action_mainFragment_to_productChickenFragment"
+            app:destination="@id/productChickenFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_productSausageFragment"
+            app:destination="@id/productSausageFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_productMilkFragment"
+            app:destination="@id/productMilkFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/productChickenFragment"
+        tools:layout="@layout/product_chicken_fragment"
+        android:name="com.example.liderstoreagent.ui.pages.ProductChickenPage"
+        android:label="Chicken products" />
+    <fragment
+        tools:layout="@layout/product_milk_fragment"
+        android:id="@+id/productMilkFragment"
+        android:name="com.example.liderstoreagent.ui.pages.ProductMilkPage"
+        android:label="Milk products" />
+    <fragment
+        tools:layout="@layout/product_sausage_fragment"
+        android:id="@+id/productSausageFragment"
+        android:name="com.example.liderstoreagent.ui.pages.ProductSausagePage"
+        android:label="ProductSausageFragment" />
+    <fragment
+        tools:layout="@layout/profile_fragment"
+        android:id="@+id/profileFragment"
+        android:name="com.example.liderstoreagent.ui.screens.ProfileFragment"
+        android:label="Agent profili" />
+    <fragment
+        android:id="@+id/aboutFragment"
+        tools:layout="@layout/about_fragment"
+        android:name="com.example.liderstoreagent.ui.screens.AboutFragment"
+        android:label="Place Holder" />
+</navigation>
