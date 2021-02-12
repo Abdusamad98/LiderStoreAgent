@@ -5,7 +5,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <Button
-        android:text="1"
+        android:text="1 -Agentga tegishli barcha kilentlar listi va ular haqidagi malumot ko'rinib turadi,va hokazo..."
         android:layout_width="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"

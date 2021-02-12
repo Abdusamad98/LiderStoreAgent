@@ -3,8 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <Button
-        android:text="5"
+    <TextView
+        android:text="Agentganing malumotlari va qancha kilent topgani ularga nima sotgani qancha oylik olishi barcha malumotlar boladi va hokazo..."
         android:layout_width="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintRight_toRightOf="parent"
