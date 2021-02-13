@@ -1,10 +1,12 @@
-package com.example.liderstoreagent
+package com.example.liderstoreagent.ui.screens
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import com.example.liderstoreagent.utils.TokenSaver
+import com.example.liderstoreagent.R
+import com.example.liderstoreagent.ui.MainActivity
+import com.example.liderstoreagent.data.source.local.TokenSaver
 
 @Suppress("DEPRECATION")
 class SplashActivity : AppCompatActivity() {
@@ -18,7 +20,7 @@ class SplashActivity : AppCompatActivity() {
 
         mHandler = Handler()
         mHandler.postDelayed({
-            if (TokenSaver.getToken()!!.isEmpty()) {
+            if (TokenSaver.token.isEmpty()) {
                 startActivity(Intent(this, RegisterActivity::class.java))
                 finish()
             } else {

@@ -6,19 +6,7 @@
         android:title="Clients" />
 
     <item
-        android:id="@+id/chicken"
-        android:icon="@drawable/ic_chicken_icon"
-        android:title="Chicken" />
-
-    <item
-        android:id="@+id/sausage"
-        android:icon="@drawable/ic_sausage_icon"
-        android:title="Sausage" />
-
-    <item
-        android:id="@+id/milk"
-        android:icon="@drawable/ic_milk_icon"
-        android:title="Milk" />
-
-
+        android:id="@+id/products"
+        android:icon="@drawable/ic_products"
+        android:title="Products" />
 </menu>

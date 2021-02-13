@@ -36,4 +36,10 @@
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">54dp</item>
     </style>
+
+    <style name="ClientItemText">
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:text">sans-serif</item>
+    </style>
 </resources>

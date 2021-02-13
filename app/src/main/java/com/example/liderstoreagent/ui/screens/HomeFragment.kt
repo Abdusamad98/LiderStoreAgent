@@ -9,10 +9,10 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.liderstoreagent.R
 import com.example.liderstoreagent.ui.adapters.MainPageAdapter
-import com.example.liderstoreagent.utils.TokenSaver
+import com.example.liderstoreagent.data.source.local.TokenSaver
 import com.example.liderstoreagent.utils.pageChangeListener
 import com.example.liderstoreagent.utils.showToast
-import com.example.liderstoreagent.viewmodels.HomeFragmentViewModel
+import com.example.liderstoreagent.ui.viewmodels.HomeFragmentViewModel
 import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.android.synthetic.main.main_nav.*
 
@@ -36,9 +36,8 @@ class HomeFragment : Fragment(R.layout.main_nav) {
             pager.currentItem = it
             when (it) {
                 0 -> bottomNavigationView.selectedItemId = R.id.clients
-                1 -> bottomNavigationView.selectedItemId = R.id.chicken
-                2 -> bottomNavigationView.selectedItemId = R.id.sausage
-                else -> bottomNavigationView.selectedItemId = R.id.milk
+                1 -> bottomNavigationView.selectedItemId = R.id.products
+                else -> bottomNavigationView.selectedItemId = R.id.products
             }
         }
 
@@ -47,10 +46,8 @@ class HomeFragment : Fragment(R.layout.main_nav) {
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.clients -> viewModel.selectPagePosition(0)
-                R.id.chicken -> viewModel.selectPagePosition(1)
-                R.id.sausage -> viewModel.selectPagePosition(2)
-                R.id.milk -> viewModel.selectPagePosition(3)
-                else -> viewModel.selectPagePosition(4)
+                R.id.products -> viewModel.selectPagePosition(1)
+                else -> viewModel.selectPagePosition(0)
             }
             return@setOnNavigationItemSelectedListener true
         }
@@ -72,7 +69,7 @@ class HomeFragment : Fragment(R.layout.main_nav) {
 
         exit.setOnClickListener{
             drawerLayout.closeDrawer(GravityCompat.START)
-            TokenSaver.setToken("")
+//            TokenSaver.setToken("")
             requireActivity().finish()
         }
         settings.setOnClickListener {

@@ -1,6 +1,7 @@
 package com.example.liderstoreagent.utils
 
 import android.content.Context
+import android.util.Log
 import android.widget.Toast
 import androidx.viewpager.widget.ViewPager
 
@@ -22,3 +23,8 @@ fun ViewPager.pageChangeListener(f: (Int) -> Unit) =
             f.invoke(position)
         }
     })
+
+
+fun log(message : String, tag : String = "TTT"){
+    Log.d(tag,message)
+}

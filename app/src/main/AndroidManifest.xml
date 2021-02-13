@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.liderstoreagent" >
 
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".app.App"
         android:allowBackup="true"
@@ -14,7 +17,7 @@
         tools:replace="android:icon">
         <activity
             android:theme="@style/FullScreenTheme"
-            android:name=".SplashActivity">
+            android:name=".ui.screens.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,8 +26,8 @@
         </activity>
         <activity
             android:theme="@style/FullScreenTheme"
-            android:name=".RegisterActivity"/>
-        <activity android:name=".MainActivity">
+            android:name=".ui.screens.RegisterActivity"/>
+        <activity android:name=".ui.MainActivity">
 
         </activity>
     </application>

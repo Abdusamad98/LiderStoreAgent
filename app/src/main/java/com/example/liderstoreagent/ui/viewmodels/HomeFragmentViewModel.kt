@@ -1,8 +1,7 @@
-package com.example.liderstoreagent.viewmodels
+package com.example.liderstoreagent.ui.viewmodels
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 
 class HomeFragmentViewModel:ViewModel() {
     val selectPageLiveData = MutableLiveData<Int>()

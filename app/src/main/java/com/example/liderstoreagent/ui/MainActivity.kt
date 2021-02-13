@@ -1,15 +1,10 @@
-package com.example.liderstoreagent
+package com.example.liderstoreagent.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.navigation.NavController
-import androidx.navigation.NavDestination
 import androidx.navigation.NavGraph
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.NavigationUI
+import com.example.liderstoreagent.R
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
