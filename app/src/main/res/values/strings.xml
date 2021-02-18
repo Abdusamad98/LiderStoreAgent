@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">LiderStoreAgent</string>
+    <string name="app_name">Leader Agent</string>
     <string name="rules">Qoidalar</string>
     <string name="about">Default</string>
     <string name="share">Default</string>
+    <string name="something">Something</string>
 </resources>

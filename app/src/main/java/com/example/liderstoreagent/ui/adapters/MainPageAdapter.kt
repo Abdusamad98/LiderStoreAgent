@@ -4,11 +4,15 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.example.liderstoreagent.ui.pages.ClientsPage
+import com.example.liderstoreagent.ui.pages.DiscountsPage
+import com.example.liderstoreagent.ui.pages.MarketPage
 import com.example.liderstoreagent.ui.pages.ProductsPage
 
 class MainPageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
+    private var eventListener : ((Int) -> Unit)? = null
+    val marketPage = MarketPage()
 
-    override fun getCount(): Int = 2
+    override fun getCount(): Int = 4
 
     override fun getItem(position: Int): Fragment {
         return when (position) {
@@ -16,13 +20,27 @@ class MainPageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
                 val fm = ClientsPage()
                 fm
             }
-            else -> {
+            1 -> {
                 val fm = ProductsPage()
+                fm.eventListener { eventListener?.invoke(it) }
+                fm
+            }
+            2 ->{
+                val fm = DiscountsPage()
+                fm
+            }
+            3 -> {
+                marketPage
+            }
+            else -> {
+                val fm = ClientsPage()
                 fm
             }
         }
     }
 
-
+    fun eventListener( f : (Int) -> Unit) {
+        eventListener = f
+    }
 
 }

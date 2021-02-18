@@ -2,7 +2,7 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    app:startDestination="@id/mainFragment"
+    app:startDestination="@id/splashFragment"
     android:id="@+id/nav_root">
     <fragment
         android:name="com.example.liderstoreagent.ui.screens.HomeFragment"
@@ -19,12 +19,34 @@
 
     <fragment
         android:id="@+id/aboutFragment"
-        tools:layout="@layout/about_fragment"
-        android:name="com.example.liderstoreagent.ui.screens.AboutFragment"
+        tools:layout="@layout/product_sell_fragment"
+        android:name="com.example.liderstoreagent.ui.screens.ProductFragment"
         android:label="Place Holder" />
     <fragment
         android:id="@+id/profileFragment"
         tools:layout="@layout/profile_fragment"
         android:name="com.example.liderstoreagent.ui.screens.ProfileFragment"
         android:label="ProfileFragment" />
+    <fragment
+        android:id="@+id/splashFragment"
+        tools:layout="@layout/splash_fragment"
+        android:name="com.example.liderstoreagent.ui.screens.SplashFragment"
+        android:label="SplashFragment" >
+        <action
+            android:id="@+id/action_splashFragment_to_loginFragment"
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        tools:layout="@layout/login_fragment"
+        android:name="com.example.liderstoreagent.ui.screens.LoginFragment"
+        android:label="LoginFragment" >
+        <action
+            android:id="@+id/action_loginFragment_to_mainFragment"
+            app:destination="@id/mainFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
 </navigation>

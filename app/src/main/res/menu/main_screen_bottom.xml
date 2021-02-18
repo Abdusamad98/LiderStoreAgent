@@ -4,9 +4,20 @@
         android:id="@+id/clients"
         android:icon="@drawable/ic_clients_icon"
         android:title="Clients" />
-
     <item
         android:id="@+id/products"
         android:icon="@drawable/ic_products"
         android:title="Products" />
+
+
+    <item
+        android:id="@+id/Discounts"
+        android:icon="@drawable/ic_price_tag"
+        android:title="Chegirma" />
+
+
+    <item
+        android:id="@+id/market"
+        android:icon="@drawable/ic_sell_icon"
+        android:title="Market" />
 </menu>

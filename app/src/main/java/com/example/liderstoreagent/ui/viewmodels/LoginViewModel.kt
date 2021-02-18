@@ -4,7 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MediatorLiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.liderstoreagent.data.models.LoginData
+import com.example.liderstoreagent.data.models.loginmodel.LoginData
+import com.example.liderstoreagent.data.models.loginmodel.LoginResponse
 import com.example.liderstoreagent.domain.usecases.LoginUseCase
 import com.example.liderstoreagent.domain.usecases.impl.LoginUseCaseImpl
 import com.example.liderstoreagent.utils.isConnected
@@ -14,7 +15,7 @@ class LoginViewModel : ViewModel() {
     val errorLoginLiveData : LiveData<String> = useCase.errorLoginLiveData
     val progressLiveData= MutableLiveData<Boolean>()
     val connectionErrorLiveData = MutableLiveData<Unit>()
-    val successLiveData = MediatorLiveData<Unit>()
+    val successLiveData = MediatorLiveData<LoginResponse>()
 
     init {
 
@@ -26,7 +27,7 @@ class LoginViewModel : ViewModel() {
             val lvd = useCase.userLogin(LoginData(userName,password))
             successLiveData.addSource(lvd) {
                 progressLiveData.value = false
-                successLiveData.value = Unit
+                successLiveData.value = it
                 successLiveData.removeSource(lvd)
             }
         } else {

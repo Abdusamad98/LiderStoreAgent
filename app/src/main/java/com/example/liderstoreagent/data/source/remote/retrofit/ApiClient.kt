@@ -7,20 +7,6 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-/*
-
-object ApiClient {
-
-    fun retrofit(): Retrofit {
-        return Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
-            .baseUrl(BASE_URL)
-            .build()
-    }
-}
-*/
-
 object ApiClient {
     private const val BASE_URL = "https://ferzu-warehouse.herokuapp.com/api/"
 

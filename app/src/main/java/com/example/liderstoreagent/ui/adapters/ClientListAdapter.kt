@@ -8,23 +8,25 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.liderstoreagent.R
-import com.example.liderstoreagent.data.models.ClientsData
+import com.example.liderstoreagent.utils.spannableText
 import kotlinx.android.synthetic.main.item_client.view.*
+import kotlinx.android.synthetic.main.item_products.view.*
 
-class ClientListAdapter : ListAdapter<ClientsData, ClientListAdapter.ViewHolder>(DiffItem) {
+class ClientListAdapter : ListAdapter<com.example.liderstoreagent.data.models.clientmodel.ClientsData, ClientListAdapter.ViewHolder>(DiffItem) {
 
+    var query = ""
 
-    object DiffItem : DiffUtil.ItemCallback<ClientsData>() {
-        override fun areItemsTheSame(oldItem: ClientsData, newItem: ClientsData): Boolean {
-            return oldItem.client_name == newItem.client_name
+    object DiffItem : DiffUtil.ItemCallback<com.example.liderstoreagent.data.models.clientmodel.ClientsData>() {
+        override fun areItemsTheSame(oldItem: com.example.liderstoreagent.data.models.clientmodel.ClientsData, newItem: com.example.liderstoreagent.data.models.clientmodel.ClientsData): Boolean {
+            return oldItem.client.id == newItem.client.id
         }
 
-        override fun areContentsTheSame(oldItem: ClientsData, newItem: ClientsData): Boolean {
-            return oldItem.client_name == newItem.client_name &&
-                    oldItem.client_address == newItem.client_address &&
-                    oldItem.debt == newItem.debt &&
-                    oldItem.responsible_agent == newItem.responsible_agent &&
-                    oldItem.phone == newItem.phone
+        override fun areContentsTheSame(oldItem: com.example.liderstoreagent.data.models.clientmodel.ClientsData, newItem: com.example.liderstoreagent.data.models.clientmodel.ClientsData): Boolean {
+            return oldItem.client.name == newItem.client.name &&
+                    oldItem.client.responsible_agent == newItem.client.responsible_agent &&
+                    oldItem.client.phone == newItem.client.phone  &&
+                    oldItem.client.address == newItem.client.address &&
+                    oldItem.total_debt == newItem.total_debt
         }
 
     }
@@ -43,41 +45,32 @@ class ClientListAdapter : ListAdapter<ClientsData, ClientListAdapter.ViewHolder>
         init {
             view.apply {
 
-                sellProduct.setOnClickListener {
-                    listener_sell?.invoke(adapterPosition)
-                }
-//                deleting.setOnClickListener {
-//                    listener_delete?.invoke(adapterPosition)
+//                sellProduct.setOnClickListener {
+//                    listener_sell?.invoke(adapterPosition)
 //                }
+//
 
             }
         }
 
-
-        fun bind(d: ClientsData) {
+        fun bind(d: com.example.liderstoreagent.data.models.clientmodel.ClientsData) {
 
             itemView.apply {
-                client_name.text = d.client_name
-                client_address.text = d.client_address
-                responsible_agent.text = d.responsible_agent
-                phone.text = d.phone
-                debt.text = d.debt
+                if (query != "") client_name.text = d.client.name spannableText query
+                else client_name.text = d.client.name
 
-                if (d.debt.toInt() > 0) {
+                client_address.text = d.client.address
+                responsible_agent.text = d.client.responsible_agent
+                phone.text = d.client.phone
+                debt.text = d.total_debt.toString()
+
+                if (d.total_debt > 0) {
                     debt.setTextColor(Color.RED)
                 } else debt.setTextColor(Color.GREEN)
 
-
             }
         }
     }
 
-    fun setOnSellProductListener(f: ((Int) -> Unit)?) {
-        listener_sell = f
-    }
 
-//
-//    fun setOnDeleteListener(f: ((Int) -> Unit)?) {
-//        listener_delete = f
-//    }
 }

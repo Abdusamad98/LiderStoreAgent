@@ -24,7 +24,9 @@ class HomeFragment : Fragment(R.layout.main_nav) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        setHasOptionsMenu(true)
+
+        agentName.setText("Agent: "+TokenSaver.getFirstName())
+
 
         pager.adapter = adapter
         pager.pageChangeListener {
@@ -37,16 +39,24 @@ class HomeFragment : Fragment(R.layout.main_nav) {
             when (it) {
                 0 -> bottomNavigationView.selectedItemId = R.id.clients
                 1 -> bottomNavigationView.selectedItemId = R.id.products
-                else -> bottomNavigationView.selectedItemId = R.id.products
+                2 -> bottomNavigationView.selectedItemId = R.id.Discounts
+                3 -> bottomNavigationView.selectedItemId = R.id.market
+                else -> bottomNavigationView.selectedItemId = R.id.clients
             }
         }
 
+        adapter.eventListener {
+            pager.currentItem = 3
+            adapter.marketPage.handlerEvent(it)
+        }
         viewModel.selectPageLiveData.observe(viewLifecycleOwner, selectPageObserver)
 
         bottomNavigationView.setOnNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.clients -> viewModel.selectPagePosition(0)
                 R.id.products -> viewModel.selectPagePosition(1)
+                R.id.Discounts -> viewModel.selectPagePosition(2)
+                R.id.market -> viewModel.selectPagePosition(3)
                 else -> viewModel.selectPagePosition(0)
             }
             return@setOnNavigationItemSelectedListener true
@@ -69,7 +79,10 @@ class HomeFragment : Fragment(R.layout.main_nav) {
 
         exit.setOnClickListener{
             drawerLayout.closeDrawer(GravityCompat.START)
-//            TokenSaver.setToken("")
+            TokenSaver.token = ""
+            TokenSaver.setAgentId(0)
+            TokenSaver.setLogin("")
+            TokenSaver.setPassword("")
             requireActivity().finish()
         }
         settings.setOnClickListener {

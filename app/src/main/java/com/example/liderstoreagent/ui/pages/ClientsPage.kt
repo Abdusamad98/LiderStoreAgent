@@ -1,99 +1,130 @@
 package com.example.liderstoreagent.ui.pages
 
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
+import android.os.Handler
 import android.view.View
-import android.widget.Toast
+import android.view.WindowManager
+import android.widget.ImageView
+import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.liderstoreagent.R
-import com.example.liderstoreagent.data.models.ClientsData
+import com.example.liderstoreagent.data.models.clientmodel.ClientsData
 import com.example.liderstoreagent.ui.adapters.ClientListAdapter
+import com.example.liderstoreagent.ui.dialogs.ClientsFilterDialog
+import com.example.liderstoreagent.ui.viewmodels.ClientPageViewModel
+import com.example.liderstoreagent.utils.showToast
 import kotlinx.android.synthetic.main.clients_fragment.*
 
 class ClientsPage : Fragment(R.layout.clients_fragment) {
 
     lateinit var clientAdapter: ClientListAdapter
-    lateinit var data: ArrayList<ClientsData>
+    private val viewModel: ClientPageViewModel by viewModels()
+    lateinit var recycler : RecyclerView
+    var clientsData: List<ClientsData> = ArrayList()
+    private var querySt = ""
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        recycler = view.findViewById(R.id.recyclerClients)
 
-        initRecycler()
+
+        clientsSetUp()
+
+        val closeButton = searchClientView.findViewById(R.id.search_close_btn) as ImageView
+        closeButton.setOnClickListener {
+            viewModel.closeSearch()
+        }
+
+        searchClients.setOnClickListener {
+            initClientsChooseDialog()
+        }
+
+            val handler = Handler()
+            searchClientView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+                override fun onQueryTextSubmit(query: String?): Boolean {
+                    handler.removeCallbacksAndMessages(null)
+                    if (query != null) {
+                        querySt = query.trim()
+                        initRecycler(clientsData.filter {
+                            it.client.name.contains(
+                                querySt,
+                                true
+                            )
+                        })
+                    }
+                    return true
+                }
+
+                override fun onQueryTextChange(newText: String?): Boolean {
+                    handler.removeCallbacksAndMessages(null)
+                    handler.postDelayed({
+                        if (newText != null) {
+                            querySt = newText.trim()
+                            initRecycler(clientsData.filter {
+                                it.client.name.contains(
+                                    querySt,
+                                    true
+                                )
+                            })
+                        }
+                    }, 500)
+                    return true
+                }
+            })
+
     }
 
-    private var countListener: ((Int) -> Unit)? = null
-    fun click(f: (Int) -> Unit) {
-        countListener = f
+    private val closeSearchObserver = Observer<Unit> {
+        searchClientView.setQuery(null, false)
+        searchClientView.clearFocus()
+        requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    }
+    private val progressObserver = Observer<Boolean> {
+        if (it) {
+            clientsProgressBar.visibility =View.VISIBLE
+        } else {
+            clientsProgressBar.visibility =View.GONE
+        }
+    }
+    private val errorClientsObserver = Observer<Unit> {
+        requireActivity().showToast("Ulanishda xatolik!")
+    }
+    private val connectionErrorObserver = Observer<Unit> {
+        requireActivity().showToast("Internet yuq!")
+    }
+    private val successClientsObserver = Observer<List<ClientsData>> { list ->
+        clientsData = list
+        initRecycler(list)
     }
 
-    fun initRecycler() {
+
+
+    fun initRecycler(data: List<ClientsData>) {
         clientAdapter = ClientListAdapter()
-        clientAdapter.submitList(fakeData())
-        recyclerClients.layoutManager = LinearLayoutManager(requireContext())
-        recyclerClients.adapter = clientAdapter
+        clientAdapter.submitList(data)
+        clientAdapter.query = querySt
+        recycler.layoutManager = LinearLayoutManager(requireContext())
+        recycler.adapter = clientAdapter
+    }
 
-        clientAdapter.setOnSellProductListener { position ->
-            Toast.makeText(requireContext(), "$position", Toast.LENGTH_SHORT).show()
-
+    private fun initClientsChooseDialog() {
+        val dialog = ClientsFilterDialog(requireContext())
+        dialog.show()
+        dialog.setOnClientFilterChosen { filter ->
+            viewModel.getClients(filter)
         }
     }
 
-    fun fakeData(): ArrayList<ClientsData> {
-        var data = ArrayList<ClientsData>()
-
-        data.add(
-            ClientsData(
-                "Namekjfejfnd",
-                "duewfToshkent Yunusobod",
-                "Akmaljon Sobirov",
-                "+998991234567",
-                "0"
-            )
-        )
-
-
-
-
-        for (x in 0..10) data.add(
-            ClientsData(
-                "Namekjfejfnd",
-                "duewfToshkent Yunusobod",
-                "Akmaljon Sobirov",
-                "+998991234567",
-                "125000"
-            )
-        )
-
-
-        data.add(
-            ClientsData(
-                "Namekjfejfnd",
-                "duewfToshkent Yunusobod",
-                "Akmaljon Sobirov",
-                "+998991234567",
-                "0"
-            )
-        )
-
-        return data
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.clients_menu, menu)
-        //super.onCreateOptionsMenu(menu, inflater)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.add_client -> {
-                Toast.makeText(requireContext(), "Developing...", Toast.LENGTH_SHORT).show()
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
+    fun clientsSetUp() {
+        viewModel.closeLiveData.observe(viewLifecycleOwner, closeSearchObserver)
+        viewModel.progressLiveData.observe(viewLifecycleOwner, progressObserver)
+        viewModel.errorCategoriesLiveData.observe(viewLifecycleOwner, errorClientsObserver)
+        viewModel.connectionErrorLiveData.observe(viewLifecycleOwner, connectionErrorObserver)
+        viewModel.successLiveData.observe(viewLifecycleOwner, successClientsObserver)
     }
 }

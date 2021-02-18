@@ -5,12 +5,12 @@ import android.os.Bundle
 import androidx.navigation.NavGraph
 import androidx.navigation.fragment.NavHostFragment
 import com.example.liderstoreagent.R
+import com.example.liderstoreagent.data.source.local.TokenSaver
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
     private lateinit var graph: NavGraph
     private lateinit var host: NavHostFragment
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,8 +19,12 @@ class MainActivity : AppCompatActivity() {
         host = myNavHostFragment as NavHostFragment
         graph = host.navController.navInflater.inflate(R.navigation.navigation)
 
-        graph.startDestination = R.id.mainFragment
+        graph.startDestination = R.id.splashFragment
         host.navController.graph = graph
 
     }
+
+
 }
+
+//TODO SplashActivity will start first

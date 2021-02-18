@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="8dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+
+
+    <TextView
+        android:id="@+id/debtTitle"
+        android:layout_width="match_parent"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:padding="4dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:text="Qaysi kilentlar?"
+        android:layout_height="wrap_content"/>
+
+
+
+    <LinearLayout
+        app:layout_constraintTop_toBottomOf="@id/debtTitle"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
+        android:layout_height="wrap_content">
+
+
+        <TextView
+            android:id="@+id/allClients"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_margin="4dp"
+            android:padding="8dp"
+            android:text="Barcha kilentlar"
+            android:background="@drawable/dialog_back"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/debtClients"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_margin="4dp"
+            android:text="Qarzdor kilentlar"
+            android:padding="8dp"
+            android:background="@drawable/dialog_back"
+            android:textSize="22sp"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            android:id="@+id/noDebtClients"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:text="Qarzdor bo'lmagan kilentlar"
+            android:background="@drawable/dialog_back"
+            android:textSize="22sp"
+            android:padding="8dp"
+            android:layout_margin="4dp"
+            android:textColor="@color/white"
+            android:layout_height="wrap_content"/>
+
+
+
+
+
+    </LinearLayout>
+
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

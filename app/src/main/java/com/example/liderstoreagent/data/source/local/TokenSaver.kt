@@ -12,19 +12,26 @@ class TokenSaver(context: Context) {
             preferences = context.getSharedPreferences("SAVER", Context.MODE_PRIVATE)
         }
 
-        fun getPreferences() = preferences
+        var token: String
+            set(value) {
+                preferences.edit().putString("token", value).apply()
+            }
+            get() {
+                return preferences.getString("token", "")!!
+            }
 
-
-        var token : String set(value) {
-            preferences.edit().putString("token", value).apply()
-        } get() {
-            return preferences.getString("token", "")!!
+        fun setAgentId(agentId: Int) {
+            preferences.edit().putInt("agent_id", agentId).apply()
         }
+
+        fun getAgentId() = preferences.getInt("agent_id", 0)
+
 
         //Save Password
         fun setPassword(password: String) {
             preferences.edit().putString("password", password).apply()
         }
+
         fun getPassword() = preferences.getString("password", "")
 
 
@@ -32,24 +39,24 @@ class TokenSaver(context: Context) {
         fun setLogin(login: String) {
             preferences.edit().putString("login", login).apply()
         }
+
         fun getLogin() = preferences.getString("login", "")
 
-
-        fun setDefault(boolean: Boolean) {
-            preferences.edit().putBoolean("bool", boolean).apply()
+        //Save First Name
+        fun setFirstName(firstName: String) {
+            preferences.edit().putString("first_name", firstName).apply()
         }
 
+        fun getFirstName() = preferences.getString("first_name", "")
 
-        fun getDefault(): Boolean {
-            return preferences.getBoolean("bool", true)
+
+        //Save Last Name
+        fun setLastName(firstName: String) {
+            preferences.edit().putString("last_name", firstName).apply()
         }
 
-        fun setType(page: String) {
-            preferences.edit().putString("type", page).apply()
-        }
+        fun getLastName() = preferences.getString("last_name", "")
 
-        fun getType(): String? {
-            return preferences.getString("type", "")
-        }
+
     }
 }
