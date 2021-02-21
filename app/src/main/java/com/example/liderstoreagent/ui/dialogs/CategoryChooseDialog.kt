@@ -13,6 +13,7 @@ class CategoryChooseDialog(context: Context, categories: List<CategoryData>) :
     private var listener: ((Int) -> Unit)? = null
     private var adapter = CategoryListAdapter(categories)
 
+
     init {
         view.apply {
 

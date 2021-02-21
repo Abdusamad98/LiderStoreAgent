@@ -10,18 +10,13 @@
         tools:layout="@layout/home_fragment"
         android:id="@+id/mainFragment" >
         <action
-            android:id="@+id/action_mainFragment_to_aboutFragment"
-            app:destination="@id/aboutFragment" />
-        <action
             android:id="@+id/action_mainFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_soldProductsFragment"
+            app:destination="@id/soldProductsFragment" />
     </fragment>
 
-    <fragment
-        android:id="@+id/aboutFragment"
-        tools:layout="@layout/product_sell_fragment"
-        android:name="com.example.liderstoreagent.ui.screens.ProductFragment"
-        android:label="Place Holder" />
     <fragment
         android:id="@+id/profileFragment"
         tools:layout="@layout/profile_fragment"
@@ -49,4 +44,9 @@
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/soldProductsFragment"
+        tools:layout="@layout/product_sold_fragment"
+        android:name="com.example.liderstoreagent.ui.screens.SoldProductsFragment"
+        android:label="SoldProductsFragment" />
 </navigation>

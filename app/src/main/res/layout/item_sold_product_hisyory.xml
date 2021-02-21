@@ -32,8 +32,9 @@
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
 
+
             <TextView
-                android:id="@+id/productName"
+                android:id="@+id/soldItemName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="60"
@@ -46,7 +47,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:orientation="horizontal"
             android:padding="4dp"
             android:weightSum="100">
@@ -56,27 +56,25 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Statusi:"
+                android:text="Status:"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
 
 
             <TextView
-                android:id="@+id/productStatus"
+                android:id="@+id/soldItemStatus"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="60"
-                android:textColor="@color/black"
+                   android:textColor="@color/black"
                 android:textSize="18sp" />
 
         </LinearLayout>
 
 
         <LinearLayout
-            android:id="@+id/quantityLinear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:orientation="horizontal"
             android:padding="4dp"
             android:weightSum="100">
@@ -92,7 +90,7 @@
 
 
             <TextView
-                android:id="@+id/productQuantity"
+                android:id="@+id/soldItemQuantity"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="60"
@@ -105,7 +103,6 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:orientation="horizontal"
             android:padding="4dp"
             android:weightSum="100">
@@ -115,13 +112,42 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Taminotchi:"
+                android:text="Narxi:"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
 
 
             <TextView
-                android:id="@+id/productProvider"
+                android:id="@+id/soldItemPrice"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="60"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="4dp"
+            android:weightSum="100">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="40"
+                android:text="Xaridor nomi:"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp" />
+
+
+            <TextView
+                android:id="@+id/soldItemClient"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="60"
@@ -131,10 +157,10 @@
         </LinearLayout>
 
 
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/white"
             android:orientation="horizontal"
             android:padding="4dp"
             android:weightSum="100">
@@ -150,7 +176,7 @@
 
 
             <TextView
-                android:id="@+id/productDate"
+                android:id="@+id/soldItemDate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="60"
@@ -161,53 +187,10 @@
 
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/white"
-            android:orientation="horizontal"
-            android:padding="4dp"
-            android:weightSum="100">
 
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="0dp"
-                android:layout_weight="60"
-                android:textColor="@color/colorPrimary"
-                android:textSize="16sp" />
-
-
-            <LinearLayout
-                android:orientation="horizontal"
-                android:id="@+id/productSell"
-                android:layout_width="0dp"
-                android:gravity="center"
-                android:background="@drawable/frame"
-                android:layout_height="wrap_content"
-                android:layout_weight="40">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:text="Sotish"
-                    android:paddingTop="6dp"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:paddingBottom="6dp"
-                    android:paddingLeft="16dp"
-                    android:paddingRight="16dp"
-                    android:gravity="center"
-                    android:textColor="@color/colorPrimaryDark"
-                    android:layout_height="wrap_content"
-/>
-
-
-            </LinearLayout>
-
-        </LinearLayout>
 
     </LinearLayout>
 
-
 </androidx.cardview.widget.CardView>
+
 

@@ -1,24 +1,20 @@
 package com.example.liderstoreagent.ui.pages
-
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
-import cn.pedant.SweetAlert.SweetAlertDialog
 import com.example.liderstoreagent.R
 import com.example.liderstoreagent.data.models.discountsmodel.DiscountedProduct
 import com.example.liderstoreagent.data.models.discountsmodel.Discounts
-import com.example.liderstoreagent.data.models.productsmodel.ProductData
 import com.example.liderstoreagent.ui.adapters.DiscountedProductListAdapter
-import com.example.liderstoreagent.ui.adapters.ProductListAdapter
 import com.example.liderstoreagent.ui.dialogs.DiscountChooseDialog
 import com.example.liderstoreagent.ui.viewmodels.DiscountsPageViewModel
 import com.example.liderstoreagent.utils.log
 import com.example.liderstoreagent.utils.showToast
 import kotlinx.android.synthetic.main.discounts_fragment.*
-import kotlinx.android.synthetic.main.products_fragment.*
 
 class DiscountsPage : Fragment(R.layout.discounts_fragment) {
 
@@ -71,11 +67,13 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
 
     private val errorDiscountsObserver = Observer<Unit> {
         requireActivity().showToast("Ulanishda xatolik!")
+        discountsProgressBar.visibility =View.GONE
     }
 
     private val connectionErrorDiscountsObserver = Observer<Unit> {
         requireActivity().showToast("Internet yuq!")
     }
+    @SuppressLint("SetTextI18n")
     private val successDiscountsObserver = Observer<List<Discounts>> { discountsList ->
         discounts = discountsList
         if (!discounts.isEmpty()) {
@@ -114,7 +112,7 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
     }
     private val successDiscountedProductsObserver = Observer<List<DiscountedProduct>> { discountedProductList ->
         discountedProducts = discountedProductList
-        if (!discountedProducts.isEmpty()) {
+        if (discountedProducts.isNotEmpty()) {
             initProductsList(discountedProducts)
         }
     }
@@ -136,7 +134,7 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
     }
 
 
-    fun initProductsList(data: List<DiscountedProduct>) {
+    private fun initProductsList(data: List<DiscountedProduct>) {
         discountsAdapter = DiscountedProductListAdapter()
         discountsAdapter.submitList(data)
         recyclerDiscountedProducts.layoutManager = LinearLayoutManager(requireContext())

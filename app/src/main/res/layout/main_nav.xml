@@ -77,6 +77,29 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/soldProducts"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:background="?android:selectableItemBackground"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:padding="4dp"
+                        android:src="@drawable/ic_history" />
+
+                    <TextView
+                        style="@style/TextView"
+                        android:layout_width="match_parent"
+                        android:layout_marginLeft="12dp"
+                        android:text="Sotilgan tovarlar"
+                        android:textColor="#000"
+                        android:textSize="16sp" />
+                </LinearLayout>
+
+                <LinearLayout
                     android:id="@+id/exit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -100,28 +123,6 @@
                 </LinearLayout>
 
 
-                <LinearLayout
-                    android:id="@+id/settings"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:background="?android:selectableItemBackground"
-                    android:gravity="center">
-
-                    <ImageView
-                        android:layout_width="36dp"
-                        android:layout_height="36dp"
-                        android:padding="4dp"
-                        android:src="@drawable/ic_settings" />
-
-                    <TextView
-                        style="@style/TextView"
-                        android:layout_width="match_parent"
-                        android:layout_marginLeft="12dp"
-                        android:text="Settings"
-                        android:textColor="#000"
-                        android:textSize="16sp" />
-                </LinearLayout>
 
 
             </LinearLayout>

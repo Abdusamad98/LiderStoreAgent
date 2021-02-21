@@ -9,7 +9,7 @@ import com.example.liderstoreagent.ui.pages.MarketPage
 import com.example.liderstoreagent.ui.pages.ProductsPage
 
 class MainPageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
-    private var eventListener : ((Int) -> Unit)? = null
+    private var eventListener: ((Int, String,String) -> Unit)? = null
     val marketPage = MarketPage()
 
     override fun getCount(): Int = 4
@@ -22,10 +22,12 @@ class MainPageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
             }
             1 -> {
                 val fm = ProductsPage()
-                fm.eventListener { eventListener?.invoke(it) }
+                fm.eventListener { id, name, unit ->
+                    eventListener?.invoke(id, name, unit)
+                }
                 fm
             }
-            2 ->{
+            2 -> {
                 val fm = DiscountsPage()
                 fm
             }
@@ -39,7 +41,7 @@ class MainPageAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
         }
     }
 
-    fun eventListener( f : (Int) -> Unit) {
+    fun eventListener(f: (Int, String,String) -> Unit) {
         eventListener = f
     }
 

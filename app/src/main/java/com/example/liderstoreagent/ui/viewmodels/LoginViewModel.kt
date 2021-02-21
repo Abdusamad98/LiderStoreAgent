@@ -9,6 +9,7 @@ import com.example.liderstoreagent.data.models.loginmodel.LoginResponse
 import com.example.liderstoreagent.domain.usecases.LoginUseCase
 import com.example.liderstoreagent.domain.usecases.impl.LoginUseCaseImpl
 import com.example.liderstoreagent.utils.isConnected
+import com.example.liderstoreagent.utils.log
 
 class LoginViewModel : ViewModel() {
     private val useCase: LoginUseCase = LoginUseCaseImpl()
@@ -29,6 +30,7 @@ class LoginViewModel : ViewModel() {
                 progressLiveData.value = false
                 successLiveData.value = it
                 successLiveData.removeSource(lvd)
+                log(it.toString(),"RESPONSE")
             }
         } else {
             connectionErrorLiveData.value =Unit

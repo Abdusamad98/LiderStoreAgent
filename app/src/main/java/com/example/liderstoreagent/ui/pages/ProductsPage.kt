@@ -28,7 +28,7 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
     var productData: List<ProductData> = ArrayList()
 
     private var querySt = ""
-    private var eventListener : ((Int) -> Unit)? = null
+    private var eventListener: ((Int, String, String) -> Unit)? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,8 +44,8 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
                 requireActivity().showToast("Ulanishda xatolik!")
             } else initCategoryChooseDialog(categories)
         }
-        productsAdapter.click {
-            eventListener?.invoke(it)
+        productsAdapter.clickedProduct { id, name, unit ->
+            eventListener?.invoke(id, name,unit)
         }
         val handler = Handler()
         searchProductView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -76,7 +76,6 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
 
     }
 
-
     private val closeSearchObserver = Observer<Unit> {
         searchProductView.setQuery(null, false)
         searchProductView.clearFocus()
@@ -85,14 +84,15 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
 
     private val progressObserver = Observer<Boolean> {
         if (it) {
-            productsProgressBar.visibility =View.VISIBLE
+            productsProgressBar.visibility = View.VISIBLE
         } else {
-            productsProgressBar.visibility =View.GONE
+            productsProgressBar.visibility = View.GONE
         }
     }
 
     private val errorCategoriesObserver = Observer<Unit> {
         requireActivity().showToast("Ulanishda xatolik!")
+        productsProgressBar.visibility = View.GONE
     }
 
     private val successCategoriesObserver = Observer<List<CategoryData>> { category ->
@@ -104,7 +104,7 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
     }
 
     fun categorySetUp() {
-      //  pageViewModel.progressCategoriesLiveData.observe(viewLifecycleOwner, progressObserver)
+        //  pageViewModel.progressCategoriesLiveData.observe(viewLifecycleOwner, progressObserver)
         pageViewModel.errorCategoriesLiveData.observe(viewLifecycleOwner, errorCategoriesObserver)
         pageViewModel.connectionErrorCategoriesLiveData.observe(
             viewLifecycleOwner,
@@ -115,9 +115,6 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
             successCategoriesObserver
         )
     }
-
-
-
 
 
     private val errorProductsObserver = Observer<Unit> {
@@ -131,7 +128,7 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
 
 
     fun productsSetUp() {
-        pageViewModel.progressProductsLiveData.observe(viewLifecycleOwner,progressObserver)
+        pageViewModel.progressProductsLiveData.observe(viewLifecycleOwner, progressObserver)
         pageViewModel.closeLiveData.observe(viewLifecycleOwner, closeSearchObserver)
         pageViewModel.errorProductsLiveData.observe(viewLifecycleOwner, errorProductsObserver)
         pageViewModel.successProductsLiveData.observe(viewLifecycleOwner, successProductsObserver)
@@ -153,7 +150,7 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
         }
     }
 
-    fun eventListener( f : (Int) -> Unit) {
+    fun eventListener(f: (Int, String,String) -> Unit) {
         eventListener = f
     }
 

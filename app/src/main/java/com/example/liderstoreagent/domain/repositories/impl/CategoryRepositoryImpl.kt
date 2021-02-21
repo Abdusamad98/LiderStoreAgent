@@ -11,12 +11,12 @@ import kotlinx.coroutines.flow.flow
 class CategoryRepositoryImpl : CategoryRepository {
 
     private val api = ApiClient.retrofit.create(CategoryApiInterface::class.java)
-    override suspend fun getCategories(): Flow<Result<List<CategoryData>?>> = flow {
+    override suspend fun getCategories(): Flow<Result<List<CategoryData>?>>
+    = flow {
         try {
             val response = api.getCategories()
             if (response.code() == 200) {
                 emit(Result.success(response.body()))
-                log(response.body().toString(), "QQQ")
             }
 
         } catch (e: Exception) {
@@ -24,6 +24,4 @@ class CategoryRepositoryImpl : CategoryRepository {
             log("TTT", "exception = $e" + "Xato!")
         }
     }
-
-
 }

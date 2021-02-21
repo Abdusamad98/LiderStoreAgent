@@ -20,7 +20,6 @@ class LoginRepositoryImpl : LoginRepository {
             val response = api.userLogin(loginData)
             if(response.code() == 200) {
                 emit(Result.success(response.body()))
-
                 TokenSaver.setPassword(loginData.password)
                 TokenSaver.setLogin(loginData.username)
                 TokenSaver.token = response.body()!!.token!!

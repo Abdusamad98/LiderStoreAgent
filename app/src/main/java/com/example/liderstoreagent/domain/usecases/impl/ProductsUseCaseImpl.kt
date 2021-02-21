@@ -12,7 +12,6 @@ import kotlinx.coroutines.flow.collect
 class ProductsUseCaseImpl : ProductsUseCase {
     private val repository: ProductsRepository = ProductsRepositoryIml()
     override val errorProductsLiveData = MutableLiveData<Unit>()
-
     override fun getProducts(categoryId: String): LiveData<List<ProductData>> = liveData {
     repository.getProducts(categoryId).collect {
             if (it.isSuccess) {

@@ -25,7 +25,7 @@ class HomeFragment : Fragment(R.layout.main_nav) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        agentName.setText("Agent: "+TokenSaver.getFirstName())
+        agentName.setText("Agent: " + TokenSaver.getFirstName())
 
 
         pager.adapter = adapter
@@ -45,9 +45,9 @@ class HomeFragment : Fragment(R.layout.main_nav) {
             }
         }
 
-        adapter.eventListener {
+        adapter.eventListener { id, name, unit ->
             pager.currentItem = 3
-            adapter.marketPage.handlerEvent(it)
+            adapter.marketPage.handlerEvent(id, name, unit)
         }
         viewModel.selectPageLiveData.observe(viewLifecycleOwner, selectPageObserver)
 
@@ -65,8 +65,6 @@ class HomeFragment : Fragment(R.layout.main_nav) {
     }
 
 
-
-
     fun loadView() {
         menu.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
@@ -77,7 +75,7 @@ class HomeFragment : Fragment(R.layout.main_nav) {
             findNavController().navigate(R.id.action_mainFragment_to_profileFragment)
         }
 
-        exit.setOnClickListener{
+        exit.setOnClickListener {
             drawerLayout.closeDrawer(GravityCompat.START)
             TokenSaver.token = ""
             TokenSaver.setAgentId(0)
@@ -85,9 +83,9 @@ class HomeFragment : Fragment(R.layout.main_nav) {
             TokenSaver.setPassword("")
             requireActivity().finish()
         }
-        settings.setOnClickListener {
+        soldProducts.setOnClickListener {
             drawerLayout.closeDrawer(GravityCompat.START)
-            requireContext().showToast("settings")
+            findNavController().navigate(R.id.action_mainFragment_to_soldProductsFragment)
         }
 
     }

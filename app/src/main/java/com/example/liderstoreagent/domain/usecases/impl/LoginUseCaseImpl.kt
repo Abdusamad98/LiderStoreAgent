@@ -13,7 +13,6 @@ import kotlinx.coroutines.flow.collect
 
 class LoginUseCaseImpl : LoginUseCase {
     private val repository: LoginRepository = LoginRepositoryImpl()
-
     override val errorLoginLiveData = MutableLiveData<String>()
 
     override fun userLogin(loginData: LoginData): LiveData<LoginResponse> =
@@ -23,5 +22,5 @@ class LoginUseCaseImpl : LoginUseCase {
                 else errorLoginLiveData.postValue("Error")
             }
         }
-//Modeling of dynamic systems// Key Words: Modeling of Simulation
+
 }

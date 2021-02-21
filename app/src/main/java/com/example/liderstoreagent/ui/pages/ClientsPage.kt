@@ -84,6 +84,9 @@ class ClientsPage : Fragment(R.layout.clients_fragment) {
         searchClientView.clearFocus()
         requireActivity().window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
     }
+
+
+
     private val progressObserver = Observer<Boolean> {
         if (it) {
             clientsProgressBar.visibility =View.VISIBLE
@@ -93,6 +96,7 @@ class ClientsPage : Fragment(R.layout.clients_fragment) {
     }
     private val errorClientsObserver = Observer<Unit> {
         requireActivity().showToast("Ulanishda xatolik!")
+        clientsProgressBar.visibility =View.GONE
     }
     private val connectionErrorObserver = Observer<Unit> {
         requireActivity().showToast("Internet yuq!")

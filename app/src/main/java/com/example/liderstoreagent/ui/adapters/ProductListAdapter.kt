@@ -17,7 +17,7 @@ class ProductListAdapter : ListAdapter<ProductData, ProductListAdapter.ViewHolde
 
     var query = ""
 
-    private var clickListener : ((Int) -> Unit)? = null
+    private var clickListener : ((Int,String,String) -> Unit)? = null
     object DiffItem : DiffUtil.ItemCallback<ProductData>() {
         override fun areItemsTheSame(oldItem: ProductData, newItem: ProductData): Boolean {
             return oldItem.id == newItem.id
@@ -42,14 +42,9 @@ class ProductListAdapter : ListAdapter<ProductData, ProductListAdapter.ViewHolde
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         init {
             view.apply {
-                itemView.setOnClickListener {
-                    clickListener?.invoke(getItem(adapterPosition).id)
+                productSell.setOnClickListener {
+                    clickListener?.invoke(getItem(adapterPosition).id,getItem((adapterPosition)).name,getItem((adapterPosition)).unit)
                 }
-//                sellProduct.setOnClickListener {
-//                    listener_sell?.invoke(adapterPosition)
-//                }
-//
-
             }
         }
 
@@ -76,12 +71,8 @@ class ProductListAdapter : ListAdapter<ProductData, ProductListAdapter.ViewHolde
         }
     }
 
-    fun click(f : (Int)->Unit) {
+    fun clickedProduct(f : (Int, String, String)->Unit) {
         clickListener = f
     }
-
-//    fun setOnSellProductListener(f: ((Int) -> Unit)?) {
-//        listener_sell = f
-//    }
 
 }
