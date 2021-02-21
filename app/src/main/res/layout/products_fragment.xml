@@ -48,13 +48,22 @@
     </LinearLayout>
 
 
-    <androidx.recyclerview.widget.RecyclerView
+
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
+        android:id="@+id/refreshProducts"
         android:layout_margin="4dp"
-        android:id="@+id/recyclerProducts"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/lineSearch"
-        android:layout_height="0dp"/>
+        android:layout_height="0dp">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/recyclerProducts"
+            android:layout_height="match_parent"/>
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
 
     <ProgressBar

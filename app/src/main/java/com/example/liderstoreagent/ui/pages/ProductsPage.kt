@@ -20,6 +20,7 @@ import com.example.liderstoreagent.ui.viewmodels.ProductsPageViewModel
 import com.example.liderstoreagent.utils.showToast
 import kotlinx.android.synthetic.main.products_fragment.*
 
+@Suppress("DEPRECATION")
 class ProductsPage : Fragment(R.layout.products_fragment) {
     private val pageViewModel: ProductsPageViewModel by viewModels()
     lateinit var recycler: RecyclerView
@@ -39,9 +40,19 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
         categorySetUp()
         productsSetUp()
 
+
+        refreshProducts.setOnRefreshListener {
+            pageViewModel.getCategories()
+            pageViewModel.getProducts(1)
+            Handler().postDelayed(Runnable {
+                refreshProducts.isRefreshing = false
+            }, 3000)
+        }
+
+
         searchByCategory.setOnClickListener {
             if (categories.isEmpty()) {
-                requireActivity().showToast("Ulanishda xatolik!")
+                requireActivity().showToast("Internetni yoqing va refresh qiling!")
             } else initCategoryChooseDialog(categories)
         }
         productsAdapter.clickedProduct { id, name, unit ->

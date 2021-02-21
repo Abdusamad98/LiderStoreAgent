@@ -33,11 +33,15 @@ class SoldProductsFragment : Fragment(R.layout.product_sold_fragment) {
 
 
 
-        swipeHistory.setOnRefreshListener {
+        refreshHistory.setOnRefreshListener {
               viewModel.getHistory()
             Handler().postDelayed(Runnable {
-                swipeHistory.isRefreshing = false
+                refreshHistory.isRefreshing = false
             }, 3000)
+        }
+
+        backToHome.setOnClickListener {
+            activity?.onBackPressed()
         }
 
 

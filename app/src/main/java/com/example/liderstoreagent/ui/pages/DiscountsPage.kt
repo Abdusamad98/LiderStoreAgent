@@ -1,6 +1,8 @@
 package com.example.liderstoreagent.ui.pages
+
 import android.annotation.SuppressLint
 import android.os.Bundle
+import android.os.Handler
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -16,6 +18,7 @@ import com.example.liderstoreagent.utils.log
 import com.example.liderstoreagent.utils.showToast
 import kotlinx.android.synthetic.main.discounts_fragment.*
 
+@Suppress("DEPRECATION")
 class DiscountsPage : Fragment(R.layout.discounts_fragment) {
 
 
@@ -39,6 +42,15 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
             } else {
                 initDiscountsChooseDialog()
             }
+        }
+
+
+        refreshDiscounts.setOnRefreshListener {
+            discountViewModel.getDiscounts()
+            discountViewModel.getDiscountedProducts(1)
+            Handler().postDelayed(Runnable {
+                refreshDiscounts.isRefreshing = false
+            }, 3000)
         }
 
     }
@@ -67,12 +79,13 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
 
     private val errorDiscountsObserver = Observer<Unit> {
         requireActivity().showToast("Ulanishda xatolik!")
-        discountsProgressBar.visibility =View.GONE
+        discountsProgressBar.visibility = View.GONE
     }
 
     private val connectionErrorDiscountsObserver = Observer<Unit> {
         requireActivity().showToast("Internet yuq!")
     }
+
     @SuppressLint("SetTextI18n")
     private val successDiscountsObserver = Observer<List<Discounts>> { discountsList ->
         discounts = discountsList
@@ -80,7 +93,8 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
             log(discounts[0].toString(), "DIS")
             discountName.text = discounts[0].name
             discount.text = discounts[0].discount.toString() + " %"
-          if(discounts[0].deadline.equals(null)) deadline.text ="Noma'lum"  else deadline.text = discounts[0].deadline.toString()//.substring(0,10)
+            if (discounts[0].deadline.equals(null)) deadline.text = "Noma'lum" else deadline.text =
+                discounts[0].deadline.toString()//.substring(0,10)
         }
     }
 
@@ -99,9 +113,9 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
 
     private val progressDiscountedProductsObserver = Observer<Boolean> {
         if (it) {
-            discountsProgressBar.visibility =View.VISIBLE
+            discountsProgressBar.visibility = View.VISIBLE
         } else {
-            discountsProgressBar.visibility =View.GONE
+            discountsProgressBar.visibility = View.GONE
         }
     }
     private val errorDiscountedProductsObserver = Observer<Unit> {
@@ -110,19 +124,23 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
     private val connectionErrorDiscountedProductsObserver = Observer<Unit> {
         requireActivity().showToast("Internet yuq!")
     }
-    private val successDiscountedProductsObserver = Observer<List<DiscountedProduct>> { discountedProductList ->
-        discountedProducts = discountedProductList
-        if (discountedProducts.isNotEmpty()) {
-            initProductsList(discountedProducts)
+    private val successDiscountedProductsObserver =
+        Observer<List<DiscountedProduct>> { discountedProductList ->
+            discountedProducts = discountedProductList
+            if (discountedProducts.isNotEmpty()) {
+                initProductsList(discountedProducts)
+            }
         }
-    }
 
     private fun discountedProductsSetUp() {
         discountViewModel.progressDiscountedProductsLiveData.observe(
             viewLifecycleOwner,
             progressDiscountedProductsObserver
         )
-        discountViewModel.errorDiscountedProductsLiveData.observe(viewLifecycleOwner, errorDiscountedProductsObserver)
+        discountViewModel.errorDiscountedProductsLiveData.observe(
+            viewLifecycleOwner,
+            errorDiscountedProductsObserver
+        )
         discountViewModel.connectionErrorDiscountedProductsLiveData.observe(
             viewLifecycleOwner,
             connectionErrorDiscountedProductsObserver

@@ -19,6 +19,7 @@ import com.example.liderstoreagent.ui.viewmodels.ClientPageViewModel
 import com.example.liderstoreagent.utils.showToast
 import kotlinx.android.synthetic.main.clients_fragment.*
 
+@Suppress("DEPRECATION")
 class ClientsPage : Fragment(R.layout.clients_fragment) {
 
     lateinit var clientAdapter: ClientListAdapter
@@ -42,6 +43,14 @@ class ClientsPage : Fragment(R.layout.clients_fragment) {
 
         searchClients.setOnClickListener {
             initClientsChooseDialog()
+        }
+
+
+        refreshClients.setOnRefreshListener {
+            viewModel.getClients("all")
+            Handler().postDelayed(Runnable {
+                refreshClients.isRefreshing = false
+            }, 3000)
         }
 
             val handler = Handler()
