@@ -36,7 +36,6 @@ class MarketPage : Fragment(R.layout.product_sell_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().showToast("Assalomu Aleykum!")
         clientsSetUp()
         sellProductSetUp()
         TextChanged(inputQuantity)

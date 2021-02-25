@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="12dp"
+    android:layout_margin="8dp"
     android:elevation="5dp"
     app:cardCornerRadius="8dp"
     app:layout_constraintLeft_toLeftOf="parent"
@@ -16,28 +16,6 @@
         android:layout_margin="8dp"
         android:orientation="vertical">
 
-
-        <ImageView
-            android:id="@+id/backToHomeProfile"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:layout_margin="12dp"
-            android:background="?android:selectableItemBackgroundBorderless"
-            android:padding="8dp"
-            android:src="@drawable/ic_back" />
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="4dp"
-            android:text="Mening ma'lumotlarim"
-            android:textColor="@color/purple_700"
-            android:textSize="28sp"
-            android:textStyle="bold" />
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -50,13 +28,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Agent Ismi:"
+                android:text="Mahsulot nomi:"
                 android:textColor="@color/colorPrimary"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
 
             <TextView
-                android:id="@+id/agent_firstname"
+                android:id="@+id/planDetailItemName"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="60"
@@ -78,13 +56,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Agent Familyasi:"
+                android:text="Statusi:"
                 android:textColor="@color/colorPrimary"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
 
             <TextView
-                android:id="@+id/agent_lastname"
+                android:id="@+id/planDetailItemStatus"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="60"
@@ -92,6 +70,34 @@
                 android:textSize="18sp" />
 
         </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="4dp"
+            android:weightSum="100">
+
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="40"
+                android:text="Plan miqdori:"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp" />
+
+
+            <TextView
+                android:id="@+id/planItemDetailQuantity"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="60"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
 
 
         <LinearLayout
@@ -106,13 +112,13 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Agent Nomeri:"
+                android:text="Bajarilgani:"
                 android:textColor="@color/colorPrimary"
-                android:textSize="16sp" />
+                android:textSize="18sp" />
 
 
             <TextView
-                android:id="@+id/agent_phone"
+                android:id="@+id/planDetailItemPercent"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="60"
@@ -121,68 +127,6 @@
 
         </LinearLayout>
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:padding="4dp"
-            android:weightSum="100">
-
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="40"
-                android:text="Belgilangan maosh:"
-                android:textColor="@color/colorPrimary"
-                android:textSize="16sp" />
-
-
-            <TextView
-                android:id="@+id/fixedSalary"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="60"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:orientation="horizontal"
-            android:padding="4dp"
-            android:weightSum="100">
-
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="40"
-                android:text="Flexible maosh:"
-                android:textColor="@color/colorPrimary"
-                android:textSize="16sp" />
-
-
-            <TextView
-                android:id="@+id/flexibleSalary"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="60"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-
-        </LinearLayout>
-
-
-        <ProgressBar
-            android:id="@+id/salaryProgressBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:visibility="gone" />
 
 
     </LinearLayout>

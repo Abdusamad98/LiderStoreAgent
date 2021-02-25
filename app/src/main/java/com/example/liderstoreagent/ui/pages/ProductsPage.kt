@@ -24,6 +24,7 @@ import kotlinx.android.synthetic.main.products_fragment.*
 class ProductsPage : Fragment(R.layout.products_fragment) {
     private val pageViewModel: ProductsPageViewModel by viewModels()
     lateinit var recycler: RecyclerView
+    var chosenCategory = 0
     lateinit var categories: ArrayList<CategoryData>
     private val productsAdapter by lazy { ProductListAdapter() }
     var productData: List<ProductData> = ArrayList()
@@ -40,10 +41,9 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
         categorySetUp()
         productsSetUp()
 
-
         refreshProducts.setOnRefreshListener {
-            pageViewModel.getCategories()
-            pageViewModel.getProducts(1)
+            //pageViewModel.getCategories()
+            if (chosenCategory != 0) pageViewModel.getProducts(chosenCategory)
             Handler().postDelayed(Runnable {
                 refreshProducts.isRefreshing = false
             }, 3000)
@@ -56,7 +56,7 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
             } else initCategoryChooseDialog(categories)
         }
         productsAdapter.clickedProduct { id, name, unit ->
-            eventListener?.invoke(id, name,unit)
+            eventListener?.invoke(id, name, unit)
         }
         val handler = Handler()
         searchProductView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -108,6 +108,8 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
 
     private val successCategoriesObserver = Observer<List<CategoryData>> { category ->
         categories = category as ArrayList<CategoryData>
+        pageViewModel.getProducts(categories[0].id)
+        chosenCategory = categories[0].id
     }
 
     private val connectionErrorObserver = Observer<Unit> {
@@ -115,7 +117,7 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
     }
 
     fun categorySetUp() {
-        //  pageViewModel.progressCategoriesLiveData.observe(viewLifecycleOwner, progressObserver)
+          pageViewModel.progressCategoriesLiveData.observe(viewLifecycleOwner, progressObserver)
         pageViewModel.errorCategoriesLiveData.observe(viewLifecycleOwner, errorCategoriesObserver)
         pageViewModel.connectionErrorCategoriesLiveData.observe(
             viewLifecycleOwner,
@@ -152,16 +154,18 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
         recycler.adapter = productsAdapter
     }
 
+
     private fun initCategoryChooseDialog(data: List<CategoryData>) {
         val dialog = CategoryChooseDialog(requireContext(), data)
         dialog.show()
         dialog.setOnCategoryChosen { id ->
+            chosenCategory = id
             pageViewModel.getProducts(id)
             requireActivity().showToast("id = $id")
         }
     }
 
-    fun eventListener(f: (Int, String,String) -> Unit) {
+    fun eventListener(f: (Int, String, String) -> Unit) {
         eventListener = f
     }
 

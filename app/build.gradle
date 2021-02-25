@@ -3,6 +3,7 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -106,5 +107,7 @@ dependencies {
      * Gson
      * */
     implementation 'com.google.code.gson:gson:2.8.6'
+    //For Drawing achart
+    implementation 'com.github.AnyChart:AnyChart-Android:1.1.2'
 
 }

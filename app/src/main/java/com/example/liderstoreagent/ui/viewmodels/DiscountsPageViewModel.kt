@@ -31,7 +31,7 @@ class DiscountsPageViewModel : ViewModel() {
 
     init {
         getDiscounts()
-        getDiscountedProducts(1)
+        //getDiscountedProducts(1)
     }
 
 

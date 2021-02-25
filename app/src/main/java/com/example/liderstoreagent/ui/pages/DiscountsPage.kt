@@ -25,6 +25,7 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
     private val discountViewModel: DiscountsPageViewModel by viewModels()
     lateinit var discountedProducts: List<DiscountedProduct>
     lateinit var discountsAdapter: DiscountedProductListAdapter
+    var chosenDiscount = 0
     var discounts: List<Discounts> = ArrayList()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -46,11 +47,10 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
 
 
         refreshDiscounts.setOnRefreshListener {
-            discountViewModel.getDiscounts()
-            discountViewModel.getDiscountedProducts(1)
+           if(chosenDiscount!=0) discountViewModel.getDiscountedProducts(chosenDiscount)
             Handler().postDelayed(Runnable {
                 refreshDiscounts.isRefreshing = false
-            }, 3000)
+            }, 2000)
         }
 
     }
@@ -59,7 +59,7 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
     private fun discountsSetUp() {
         discountViewModel.progressDiscountsLiveData.observe(
             viewLifecycleOwner,
-            progressDiscountObserver
+            progressDiscountedProductsObserver
         )
         discountViewModel.errorDiscountsLiveData.observe(viewLifecycleOwner, errorDiscountsObserver)
         discountViewModel.connectionErrorDiscountsLiveData.observe(
@@ -73,10 +73,6 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
     }
 
 
-    private val progressDiscountObserver = Observer<Boolean> {
-
-    }
-
     private val errorDiscountsObserver = Observer<Unit> {
         requireActivity().showToast("Ulanishda xatolik!")
         discountsProgressBar.visibility = View.GONE
@@ -89,7 +85,10 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
     @SuppressLint("SetTextI18n")
     private val successDiscountsObserver = Observer<List<Discounts>> { discountsList ->
         discounts = discountsList
+
         if (!discounts.isEmpty()) {
+            chosenDiscount = discounts[0].id
+            discountViewModel.getDiscountedProducts(discounts[0].id)
             log(discounts[0].toString(), "DIS")
             discountName.text = discounts[0].name
             discount.text = discounts[0].discount.toString() + " %"
@@ -107,6 +106,7 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
             deadline.text = deadline1
             discount.text = discount1
             discountViewModel.getDiscountedProducts(id1)
+            chosenDiscount = id1
             requireActivity().showToast("id = $id1")
         }
     }

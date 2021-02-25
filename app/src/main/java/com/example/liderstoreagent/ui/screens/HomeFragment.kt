@@ -33,7 +33,6 @@ class HomeFragment : Fragment(R.layout.main_nav) {
             viewModel.selectPagePosition(it)
         }
 
-
         val selectPageObserver = Observer<Int> {
             pager.currentItem = it
             when (it) {
@@ -86,6 +85,11 @@ class HomeFragment : Fragment(R.layout.main_nav) {
         soldProducts.setOnClickListener {
             drawerLayout.closeDrawer(GravityCompat.START)
             findNavController().navigate(R.id.action_mainFragment_to_soldProductsFragment)
+        }
+
+        plan.setOnClickListener {
+            drawerLayout.closeDrawer(GravityCompat.START)
+            findNavController().navigate(R.id.action_mainFragment_to_planFragment)
         }
 
     }

@@ -28,7 +28,7 @@ class ProductsPageViewModel : ViewModel() {
 
     init {
         getCategories()
-        getProducts(1)
+      //  getProducts(1)
     }
 
     fun getProducts(categoryId: Int) {

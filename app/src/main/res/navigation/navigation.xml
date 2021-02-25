@@ -8,13 +8,16 @@
         android:name="com.example.liderstoreagent.ui.screens.HomeFragment"
         android:label="Agent oynasi"
         tools:layout="@layout/home_fragment"
-        android:id="@+id/mainFragment" >
+        android:id="@+id/mainFragment">
         <action
             android:id="@+id/action_mainFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
         <action
             android:id="@+id/action_mainFragment_to_soldProductsFragment"
             app:destination="@id/soldProductsFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_planFragment"
+            app:destination="@id/planFragment" />
     </fragment>
 
     <fragment
@@ -26,7 +29,7 @@
         android:id="@+id/splashFragment"
         tools:layout="@layout/splash_fragment"
         android:name="com.example.liderstoreagent.ui.screens.SplashFragment"
-        android:label="SplashFragment" >
+        android:label="SplashFragment">
         <action
             android:id="@+id/action_splashFragment_to_loginFragment"
             app:destination="@id/loginFragment"
@@ -37,7 +40,7 @@
         android:id="@+id/loginFragment"
         tools:layout="@layout/login_fragment"
         android:name="com.example.liderstoreagent.ui.screens.LoginFragment"
-        android:label="LoginFragment" >
+        android:label="LoginFragment">
         <action
             android:id="@+id/action_loginFragment_to_mainFragment"
             app:destination="@id/mainFragment"
@@ -49,4 +52,24 @@
         tools:layout="@layout/product_sold_fragment"
         android:name="com.example.liderstoreagent.ui.screens.SoldProductsFragment"
         android:label="SoldProductsFragment" />
+    <fragment
+        android:id="@+id/planFragment"
+        tools:layout="@layout/plan_fragment"
+        android:name="com.example.liderstoreagent.ui.screens.plan.PlanFragment"
+        android:label="PlanFragment">
+        <action
+            android:id="@+id/action_planFragment_to_planDetailsFragment"
+            app:destination="@id/planDetailsFragment" />
+    </fragment>
+    <fragment
+        tools:layout="@layout/plan_details_fragment"
+        android:id="@+id/planDetailsFragment"
+        android:name="com.example.liderstoreagent.ui.screens.plan.PlanDetailsFragment"
+        android:label="PlanDetailsFragment">
+        <argument
+            android:name="myArg"
+            app:argType="integer"
+            android:defaultValue="0" />
+
+    </fragment>
 </navigation>

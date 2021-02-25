@@ -16,6 +16,7 @@ import com.example.liderstoreagent.data.models.clientmodel.ClientsData
 import com.example.liderstoreagent.ui.adapters.ClientListAdapter
 import com.example.liderstoreagent.ui.dialogs.ClientsFilterDialog
 import com.example.liderstoreagent.ui.viewmodels.ClientPageViewModel
+import com.example.liderstoreagent.utils.log
 import com.example.liderstoreagent.utils.showToast
 import kotlinx.android.synthetic.main.clients_fragment.*
 
@@ -112,6 +113,7 @@ class ClientsPage : Fragment(R.layout.clients_fragment) {
     }
     private val successClientsObserver = Observer<List<ClientsData>> { list ->
         clientsData = list
+        log("${clientsData.toString()}","CLIENT")
         initRecycler(list)
     }
 
