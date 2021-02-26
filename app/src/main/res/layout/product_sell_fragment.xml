@@ -4,7 +4,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <TextView
         android:id="@+id/sellTitle"
         android:layout_width="match_parent"
@@ -13,7 +12,7 @@
         android:gravity="center"
         android:textStyle="bold"
         android:padding="8dp"
-        android:text="SOTILAYOTGAN MAHSULOT \nMA'LUMTLARI!"
+        android:text="SOTILAYOTGAN MAHSULOT MA'LUMTLARI!"
         android:textColor="@color/purple_700"
         android:textSize="16sp"
         app:layout_constraintLeft_toLeftOf="parent"

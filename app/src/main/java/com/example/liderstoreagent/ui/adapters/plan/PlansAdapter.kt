@@ -55,8 +55,8 @@ class PlansAdapter : ListAdapter<PlanData, PlansAdapter.ViewHolder>(DiffItem) {
                 planItemDeadline.text = d.deadline
 
                 val pie = AnyChart.pie()
-                val arrayTitle = arrayOf<String>("Bajarilmadi","Bajarildi")
-                val arrayValue = arrayOf<Float>(100f-d.percent.toFloat(),d.percent.toFloat())
+                val arrayTitle = arrayOf<String>("Bajarildi","Bajarilmadi")
+                val arrayValue = arrayOf<Float>(d.percent.toFloat(),100f)
                 var list = ArrayList<DataEntry>()
                 list.add(ValueDataEntry(arrayTitle[0],arrayValue[0]))
                 list.add(ValueDataEntry(arrayTitle[1],arrayValue[1]))

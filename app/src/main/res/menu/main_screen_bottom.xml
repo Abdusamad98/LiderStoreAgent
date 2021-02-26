@@ -3,12 +3,11 @@
     <item
         android:id="@+id/clients"
         android:icon="@drawable/ic_clients_icon"
-        android:title="Clients" />
+        android:title="Kilentar" />
     <item
         android:id="@+id/products"
         android:icon="@drawable/ic_products"
-        android:title="Products" />
-
+        android:title="Mahsulotlar" />
 
     <item
         android:id="@+id/Discounts"
@@ -19,5 +18,5 @@
     <item
         android:id="@+id/market"
         android:icon="@drawable/ic_sell_icon"
-        android:title="Market" />
+        android:title="Sotish" />
 </menu>

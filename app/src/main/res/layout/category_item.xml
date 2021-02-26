@@ -11,10 +11,10 @@
         android:id="@+id/categoryName"
         android:layout_width="match_parent"
         android:gravity="center"
-        android:background="@drawable/back_of_search"
+        android:background="@drawable/dialog_back"
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="28sp"
-        android:textColor="@color/colorPrimary"
+        android:textColor="@color/white"
         android:layout_height="50dp"/>
 
 

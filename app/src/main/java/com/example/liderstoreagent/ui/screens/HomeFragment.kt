@@ -1,5 +1,5 @@
 package com.example.liderstoreagent.ui.screens
-
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import androidx.core.view.GravityCompat
@@ -11,22 +11,20 @@ import com.example.liderstoreagent.R
 import com.example.liderstoreagent.ui.adapters.MainPageAdapter
 import com.example.liderstoreagent.data.source.local.TokenSaver
 import com.example.liderstoreagent.utils.pageChangeListener
-import com.example.liderstoreagent.utils.showToast
 import com.example.liderstoreagent.ui.viewmodels.HomeFragmentViewModel
 import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.android.synthetic.main.main_nav.*
-
 
 class HomeFragment : Fragment(R.layout.main_nav) {
 
     private val viewModel: HomeFragmentViewModel by viewModels()
     private val adapter by lazy { MainPageAdapter(childFragmentManager) }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        agentName.setText("Agent: " + TokenSaver.getFirstName())
-
+        agentName.setText("Agent ismi: " + TokenSaver.getFirstName())
 
         pager.adapter = adapter
         pager.pageChangeListener {

@@ -108,6 +108,7 @@ class MarketPage : Fragment(R.layout.product_sell_fragment) {
                 inputQuantity.setText("")
                 inputPrice.setText("")
                 cardView.visibility = View.GONE
+                sellTitle.visibility = View.GONE
                 dialog.cancel()
             }.show()
     }
@@ -165,7 +166,8 @@ class MarketPage : Fragment(R.layout.product_sell_fragment) {
 
     fun handlerEvent(id: Int, name: String, unit: String) {
         cardView.visibility = View.VISIBLE
-        requireContext().showToast("marker screen id = $id + $name + $unit")
+        sellTitle.visibility = View.VISIBLE
+       // requireContext().showToast("marker screen id = $id + $name + $unit")
         sellProductName.text = name
         unitText.text = unit
         productName = name
