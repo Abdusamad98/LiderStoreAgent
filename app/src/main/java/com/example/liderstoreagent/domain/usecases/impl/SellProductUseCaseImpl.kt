@@ -8,7 +8,6 @@ import com.example.liderstoreagent.data.models.sellmodel.SellProductResponse
 import com.example.liderstoreagent.domain.repositories.SellProductRepository
 import com.example.liderstoreagent.domain.repositories.impl.SellProductRepositoryImpl
 import com.example.liderstoreagent.domain.usecases.SellProductUseCase
-import com.google.gson.JsonObject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
 
@@ -28,8 +27,6 @@ class SellProductUseCaseImpl : SellProductUseCase {
                 } else {
                     errorNotResponseLiveData.postValue("Error")
                 }
-//                if (it.isSuccess) emit(it.getOrNull()!!)
-//                else errorSellLiveData.postValue("")
             }
         }
 

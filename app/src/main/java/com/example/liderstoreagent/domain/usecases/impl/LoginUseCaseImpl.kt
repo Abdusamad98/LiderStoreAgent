@@ -1,5 +1,4 @@
 package com.example.liderstoreagent.domain.usecases.impl
-
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
@@ -10,6 +9,7 @@ import com.example.liderstoreagent.domain.repositories.impl.LoginRepositoryImpl
 import com.example.liderstoreagent.domain.usecases.LoginUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collect
+
 
 class LoginUseCaseImpl : LoginUseCase {
     private val repository: LoginRepository = LoginRepositoryImpl()

@@ -153,7 +153,7 @@ class MarketPage : Fragment(R.layout.product_sell_fragment) {
                 dateLinear.visibility = View.VISIBLE
             } else dateLinear.visibility = View.GONE
             clientId = id
-            requireActivity().showToast("id = $id + $name + $totalDebt")
+          //  requireActivity().showToast("id = $id + $name + $totalDebt")
         }
     }
 
@@ -167,7 +167,6 @@ class MarketPage : Fragment(R.layout.product_sell_fragment) {
     fun handlerEvent(id: Int, name: String, unit: String) {
         cardView.visibility = View.VISIBLE
         sellTitle.visibility = View.VISIBLE
-       // requireContext().showToast("marker screen id = $id + $name + $unit")
         sellProductName.text = name
         unitText.text = unit
         productName = name

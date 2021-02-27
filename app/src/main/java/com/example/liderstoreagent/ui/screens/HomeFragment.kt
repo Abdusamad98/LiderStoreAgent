@@ -90,6 +90,11 @@ class HomeFragment : Fragment(R.layout.main_nav) {
             findNavController().navigate(R.id.action_mainFragment_to_planFragment)
         }
 
+        report.setOnClickListener {
+            drawerLayout.closeDrawer(GravityCompat.START)
+            findNavController().navigate(R.id.action_mainFragment_to_reportFragment)
+        }
+
     }
 
 }

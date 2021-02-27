@@ -1,5 +1,4 @@
 package com.example.liderstoreagent.domain.usecases.impl
-
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData

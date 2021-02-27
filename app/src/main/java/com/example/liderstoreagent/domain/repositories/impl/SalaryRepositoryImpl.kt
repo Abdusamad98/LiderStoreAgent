@@ -11,7 +11,6 @@ import kotlinx.coroutines.flow.flow
 
 class SalaryRepositoryImpl : SalaryRepository {
     private val api = ApiClient.retrofit.create(SalaryApiInterface::class.java)
-
     override suspend fun getSalary():
             Flow<Result<Pair<Int, SalaryData?>>> = flow {
         try {
@@ -19,7 +18,7 @@ class SalaryRepositoryImpl : SalaryRepository {
             val code = response.code()
             if (code == 200) {
                 emit(Result.success(Pair(200, response.body())))
-            } else if (code == 500 ||code == 400 ||code == 404) {
+            } else if (code == 500 || code == 400 || code == 404) {
                 emit(Result.success(Pair(500, null)))
             }
         } catch (e: Exception) {

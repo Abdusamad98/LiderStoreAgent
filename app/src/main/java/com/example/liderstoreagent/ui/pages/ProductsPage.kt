@@ -42,7 +42,6 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
         productsSetUp()
 
         refreshProducts.setOnRefreshListener {
-            //pageViewModel.getCategories()
             if (chosenCategory != 0) pageViewModel.getProducts(chosenCategory)
             Handler().postDelayed(Runnable {
                 refreshProducts.isRefreshing = false
@@ -161,7 +160,7 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
         dialog.setOnCategoryChosen { id ->
             chosenCategory = id
             pageViewModel.getProducts(id)
-            requireActivity().showToast("id = $id")
+           // requireActivity().showToast("id = $id")
         }
     }
 

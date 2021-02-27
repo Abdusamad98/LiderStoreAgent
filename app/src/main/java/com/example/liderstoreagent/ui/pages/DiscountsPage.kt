@@ -127,9 +127,9 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
     private val successDiscountedProductsObserver =
         Observer<List<DiscountedProduct>> { discountedProductList ->
             discountedProducts = discountedProductList
-            if (discountedProducts.isNotEmpty()) {
+
                 initProductsList(discountedProducts)
-            }
+
         }
 
     private fun discountedProductsSetUp() {

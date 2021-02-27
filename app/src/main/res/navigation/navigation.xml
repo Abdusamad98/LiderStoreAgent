@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_mainFragment_to_planFragment"
             app:destination="@id/planFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_reportFragment"
+            app:destination="@id/reportFragment" />
     </fragment>
 
     <fragment
@@ -72,4 +75,9 @@
             android:defaultValue="0" />
 
     </fragment>
+    <fragment
+        tools:layout="@layout/report_fragment"
+        android:id="@+id/reportFragment"
+        android:name="com.example.liderstoreagent.ui.screens.report.ReportFragment"
+        android:label="ReportFragment" />
 </navigation>

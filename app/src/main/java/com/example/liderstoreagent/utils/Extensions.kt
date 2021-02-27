@@ -7,6 +7,10 @@ import android.widget.Spinner
 import com.example.liderstoreagent.R
 import android.widget.Toast
 import androidx.viewpager.widget.ViewPager
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import java.io.File
 
 fun Context.showToast(st: String) {
     Toast.makeText(this, st, Toast.LENGTH_SHORT).show()
@@ -32,6 +36,11 @@ fun log(message : String, tag : String = "TTT"){
     Log.d(tag,message)
 }
 
+
+fun File.toRequestData(): MultipartBody.Part {
+    val fileReqBody = this.asRequestBody("image/*".toMediaTypeOrNull())
+    return MultipartBody.Part.createFormData("file", name, fileReqBody)
+}
 
 //
 //fun Spinner.addItems(context: Context, data: ArrayList<String>){
