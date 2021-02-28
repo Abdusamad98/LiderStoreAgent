@@ -2,6 +2,7 @@ package com.example.liderstoreagent.ui.screens
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import androidx.appcompat.app.AlertDialog
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -73,13 +74,26 @@ class HomeFragment : Fragment(R.layout.main_nav) {
         }
 
         exit.setOnClickListener {
+            AlertDialog.Builder(requireContext())
+                .setTitle("Diqqat!")
+                .setMessage("Tizimdan chiqishni hohlaysizmi?")
+                .setNegativeButton("Yo'q"){dialog, _ ->
+                    dialog.cancel()
+                }
+                .setPositiveButton("Ha") { dialog, _ ->
+                    TokenSaver.token = ""
+                    TokenSaver.setAgentId(0)
+                    TokenSaver.setLogin("")
+                    TokenSaver.setPassword("")
+                    requireActivity().finish()
+                    dialog.cancel()
+                }.show()
             drawerLayout.closeDrawer(GravityCompat.START)
-            TokenSaver.token = ""
-            TokenSaver.setAgentId(0)
-            TokenSaver.setLogin("")
-            TokenSaver.setPassword("")
-            requireActivity().finish()
         }
+
+
+
+
         soldProducts.setOnClickListener {
             drawerLayout.closeDrawer(GravityCompat.START)
             findNavController().navigate(R.id.action_mainFragment_to_soldProductsFragment)

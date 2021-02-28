@@ -37,7 +37,7 @@ class SoldProductsFragment : Fragment(R.layout.product_sold_fragment) {
               viewModel.getHistory()
             Handler().postDelayed(Runnable {
                 refreshHistory.isRefreshing = false
-            }, 3000)
+            }, 2000)
         }
 
         backToHome.setOnClickListener {

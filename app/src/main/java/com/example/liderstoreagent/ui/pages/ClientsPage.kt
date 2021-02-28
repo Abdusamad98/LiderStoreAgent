@@ -26,6 +26,7 @@ class ClientsPage : Fragment(R.layout.clients_fragment) {
     lateinit var clientAdapter: ClientListAdapter
     private val viewModel: ClientPageViewModel by viewModels()
     lateinit var recycler : RecyclerView
+    var chosenClientType = "all"
     var clientsData: List<ClientsData> = ArrayList()
     private var querySt = ""
 
@@ -48,7 +49,7 @@ class ClientsPage : Fragment(R.layout.clients_fragment) {
 
 
         refreshClients.setOnRefreshListener {
-            viewModel.getClients("all")
+            viewModel.getClients(chosenClientType)
             Handler().postDelayed(Runnable {
                 refreshClients.isRefreshing = false
             }, 3000)
@@ -131,6 +132,7 @@ class ClientsPage : Fragment(R.layout.clients_fragment) {
         val dialog = ClientsFilterDialog(requireContext())
         dialog.show()
         dialog.setOnClientFilterChosen { filter ->
+            chosenClientType = filter
             viewModel.getClients(filter)
         }
     }

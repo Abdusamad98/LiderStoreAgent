@@ -31,10 +31,9 @@ fun OkHttpClient.Builder.addLogging(): OkHttpClient.Builder {
         override fun log(message: String) {
             com.example.liderstoreagent.utils.log(message)
         }
-
     })
     logging.level = HttpLoggingInterceptor.Level.HEADERS
-    if (true) {
+    if (false) {
         addNetworkInterceptor(logging)
         addNetworkInterceptor(ChuckInterceptor(context))
     }

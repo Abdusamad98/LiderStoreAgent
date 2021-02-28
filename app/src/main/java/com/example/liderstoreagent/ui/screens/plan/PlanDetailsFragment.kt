@@ -35,7 +35,6 @@ class PlanDetailsFragment : Fragment(R.layout.plan_details_fragment) {
        if(args.myArg!=0) viewModel.getPlansDetails(args.myArg.toString())
 
         refreshPlansDetail.setOnRefreshListener {
-            requireContext().showToast(args.myArg.toString())
              viewModel.getPlansDetails(args.myArg.toString())
             Handler().postDelayed(Runnable {
                 refreshPlansDetail.isRefreshing = false

@@ -23,8 +23,10 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if(!TokenSaver.getLogin()!!.isEmpty()){
+        if(TokenSaver.getLogin()!!.isNotEmpty()){
             input_login.setText(TokenSaver.getLogin())
+            loginLayout.visibility =View.GONE
+            login.text = "Kirish"
         }
 
         login.setOnClickListener {

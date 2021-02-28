@@ -21,7 +21,7 @@ class PlanDetailRepositoryImpl : PlanDetailRepository {
             if (response.code() == 200) {
                 emit(Result.success(Pair(200,response.body())))
             }
-            else if(response.code() == 404){
+            else if(response.code() == 404||response.code() == 500){
                 emit(Result.success(Pair(404,null)))
             }
 
