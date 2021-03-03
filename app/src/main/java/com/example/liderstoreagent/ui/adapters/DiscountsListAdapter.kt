@@ -16,6 +16,7 @@ class DiscountsListAdapter (val data: List<Discounts>) :
             R.layout.discounts_item, parent, false
         )
     )
+
     private var listener: ((Int,String,String,String) -> Unit)? = null
 
     override fun getItemCount() = data.size

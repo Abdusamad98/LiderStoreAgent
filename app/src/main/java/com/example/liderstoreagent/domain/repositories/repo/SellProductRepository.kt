@@ -1,4 +1,4 @@
-package com.example.liderstoreagent.domain.repositories
+package com.example.liderstoreagent.domain.repositories.repo
 
 import androidx.lifecycle.LiveData
 import com.example.liderstoreagent.data.models.sellmodel.SellProductData

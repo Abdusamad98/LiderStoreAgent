@@ -3,7 +3,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.example.liderstoreagent.data.models.clientmodel.ClientsData
-import com.example.liderstoreagent.domain.repositories.ClientsRepository
+import com.example.liderstoreagent.domain.repositories.repo.ClientsRepository
 import com.example.liderstoreagent.domain.repositories.impl.ClientsRepositoryImpl
 import com.example.liderstoreagent.domain.usecases.ClientsUseCase
 import kotlinx.coroutines.flow.collect

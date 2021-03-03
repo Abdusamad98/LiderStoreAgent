@@ -5,7 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.example.liderstoreagent.data.models.sellmodel.SellProductData
 import com.example.liderstoreagent.data.models.sellmodel.SellProductResponse
-import com.example.liderstoreagent.domain.repositories.SellProductRepository
+import com.example.liderstoreagent.domain.repositories.repo.SellProductRepository
 import com.example.liderstoreagent.domain.repositories.impl.SellProductRepositoryImpl
 import com.example.liderstoreagent.domain.usecases.SellProductUseCase
 import kotlinx.coroutines.Dispatchers

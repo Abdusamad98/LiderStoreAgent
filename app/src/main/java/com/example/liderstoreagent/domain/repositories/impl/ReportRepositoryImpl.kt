@@ -5,7 +5,7 @@ import com.example.liderstoreagent.app.App
 import com.example.liderstoreagent.data.models.reportmodel.ReportData
 import com.example.liderstoreagent.data.source.remote.retrofit.ApiClient
 import com.example.liderstoreagent.data.source.remote.retrofit.ReportApiInterface
-import com.example.liderstoreagent.domain.repositories.ReportRepository
+import com.example.liderstoreagent.domain.repositories.repo.ReportRepository
 import id.zelory.compressor.Compressor
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

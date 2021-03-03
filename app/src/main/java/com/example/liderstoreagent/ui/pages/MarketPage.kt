@@ -12,22 +12,24 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import com.example.liderstoreagent.R
 import com.example.liderstoreagent.data.models.clientmodel.ClientsData
+import com.example.liderstoreagent.data.models.getproduct.Discount
+import com.example.liderstoreagent.data.models.getproduct.productFullData
 import com.example.liderstoreagent.data.models.sellmodel.SellProductData
 import com.example.liderstoreagent.data.models.sellmodel.SellProductResponse
 import com.example.liderstoreagent.ui.dialogs.ClientChooseDialog
+import com.example.liderstoreagent.ui.dialogs.DiscountsDialog
 import com.example.liderstoreagent.ui.viewmodels.ClientPageViewModel
 import com.example.liderstoreagent.ui.viewmodels.SellProductViewModel
-import com.example.liderstoreagent.utils.log
 import com.example.liderstoreagent.utils.showToast
-import kotlinx.android.synthetic.main.login_fragment.*
 import kotlinx.android.synthetic.main.product_sell_fragment.*
-import kotlinx.android.synthetic.main.products_fragment.*
 
 class MarketPage : Fragment(R.layout.product_sell_fragment) {
 
     var productName = ""
     var productId = -1
     var clientId = -1
+    var discountValue = 0
+    var discounts: List<Discount> = ArrayList()
     private val viewModel: ClientPageViewModel by viewModels()
     var clientsData: List<ClientsData> = ArrayList()
 
@@ -36,7 +38,10 @@ class MarketPage : Fragment(R.layout.product_sell_fragment) {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        if (productId <= 0) cardView.visibility = View.GONE
+
         clientsSetUp()
+        getProductSetUp()
         sellProductSetUp()
         TextChanged(inputQuantity)
         TextChanged(inputPrice)
@@ -62,8 +67,15 @@ class MarketPage : Fragment(R.layout.product_sell_fragment) {
                     val price = inputPrice.text.toString().toDouble()
                     productName
                     clientId
-                    if (quantity > 0 && 0 < price) {
-                        val sellData = SellProductData("%.2f".format(price ),"%.2f".format(quantity ), "", "", clientId, productId)
+                    if (quantity > 0 && price > 0) {
+                        val sellData = SellProductData(
+                                "%.2f".format(price - price * discountValue / 100),
+                                "%.2f".format(quantity),
+                                "",
+                                "",
+                                clientId,
+                                productId
+                        )
                         sellViewModel.sellProduct(sellData)
                     } else requireActivity().showToast("Yaroqli miqdor yoki narxni kiriting!")
 
@@ -72,8 +84,52 @@ class MarketPage : Fragment(R.layout.product_sell_fragment) {
         }
 
 
+        discountButton.setOnClickListener {
+            val dialog = DiscountsDialog()
+            dialog.lists = discounts
+            dialog.clickListener { it ->
+                discountValue = it
+                discountText.text = it.toString() + " %"
+                setTotalPrice()
+            }
+            dialog.show(childFragmentManager, "example name")
+        }
+
     }
 
+    private val progressProductObserver = Observer<Boolean> {
+        if (it) {
+            sellProgressBar.visibility = View.VISIBLE
+        } else {
+            sellProgressBar.visibility = View.GONE
+        }
+    }
+
+    private val errorProductObserver = Observer<Unit> {
+        requireActivity().showToast("Ulanishda xatolik!")
+        sellProgressBar.visibility = View.GONE
+    }
+
+
+    private val connectionErrorProductObserver = Observer<Unit> {
+        requireActivity().showToast("Internet yuq!")
+    }
+
+
+    private val successProductObserver = Observer<productFullData> { response ->
+        if (response.discount.isNotEmpty()) {
+            discountLayout.visibility = View.VISIBLE
+            discountText.text = "0 %"
+            discountValue = 0
+        } else discountLayout.visibility = View.GONE
+        cardView.visibility = View.VISIBLE
+        sellTitle.visibility = View.VISIBLE
+        sellProductName.text = response.product.name
+        unitText.text = response.product.unit
+        productName = response.product.name
+        productId = response.product.id
+        discounts = response.discount
+    }
 
     private val progressSellObserver = Observer<Boolean> {
         if (it) {
@@ -83,6 +139,7 @@ class MarketPage : Fragment(R.layout.product_sell_fragment) {
         }
     }
 
+
     private val errorSellObserver = Observer<String> {
         requireActivity().showToast("Ulanishda xatolik!")
         sellProgressBar.visibility = View.GONE
@@ -90,39 +147,52 @@ class MarketPage : Fragment(R.layout.product_sell_fragment) {
     private val connectionErrorSellObserver = Observer<Unit> {
         requireActivity().showToast("Internet yuq!")
     }
-
     private val successSellObserver = Observer<SellProductResponse> { response ->
-        if(response.client == clientId && response.product == productId){
+        if (response.client == clientId && response.product == productId) {
             initDialog()
         }
 
     }
-   private fun initDialog(){
+
+    private fun initDialog() {
         AlertDialog.Builder(requireContext())
-            .setTitle("Diqqat!")
-            .setMessage("So'rovingiz muvaffqiyatli amalga oshdi. Tasdiqlash uchun omborchiga yuborildi!")
-            .setPositiveButton("Ok") { dialog, _ ->
-                productName = ""
-                productId = -1
-                clientId = -1
-                inputQuantity.setText("")
-                inputPrice.setText("")
-                cardView.visibility = View.GONE
-                sellTitle.visibility = View.GONE
-                dialog.cancel()
-            }.show()
+                .setTitle("Diqqat!")
+                .setMessage("So'rovingiz muvaffqiyatli amalga oshdi. Tasdiqlash uchun omborchiga yuborildi!")
+                .setPositiveButton("Ok") { dialog, _ ->
+                    productName = ""
+                    productId = -1
+                    clientId = -1
+                    discountValue = 0
+                    discountText.text = "0 %"
+                    inputQuantity.setText("")
+                    inputPrice.setText("")
+                    cardView.visibility = View.GONE
+                    sellTitle.visibility = View.GONE
+                    dialog.cancel()
+                }.show()
     }
 
-   @SuppressLint("FragmentLiveDataObserve")
-   private fun sellProductSetUp() {
+    @SuppressLint("FragmentLiveDataObserve")
+    private fun sellProductSetUp() {
         sellViewModel.progressSellLiveData.observe(viewLifecycleOwner, progressSellObserver)
         sellViewModel.errorNotResponseLiveData.observe(viewLifecycleOwner, errorSellObserver)
         sellViewModel.connectionErrorLiveData.observe(
-            viewLifecycleOwner,
-            connectionErrorSellObserver
+                viewLifecycleOwner,
+                connectionErrorSellObserver
         )
-       sellViewModel.errorResponseLiveData.observe(this,errorResponseObserver)
+        sellViewModel.errorResponseLiveData.observe(this, errorResponseObserver)
         sellViewModel.successLiveData.observe(viewLifecycleOwner, successSellObserver)
+    }
+
+
+    private fun getProductSetUp() {
+        sellViewModel.progressProductLiveData.observe(viewLifecycleOwner, progressProductObserver)
+        sellViewModel.connectionErrorProductLiveData.observe(
+                viewLifecycleOwner,
+                connectionErrorProductObserver
+        )
+        sellViewModel.successProductLiveData.observe(viewLifecycleOwner, successProductObserver)
+        sellViewModel.errorProductLiveData.observe(viewLifecycleOwner, errorProductObserver)
     }
 
     private val errorResponseObserver = Observer<String> {
@@ -150,27 +220,21 @@ class MarketPage : Fragment(R.layout.product_sell_fragment) {
         dialog.setOnClientChosen { id, name, totalDebt ->
             clientName.text = name
             if (totalDebt > 0) {
-                dateLinear.visibility = View.VISIBLE
+                //dateLinear.visibility = View.VISIBLE
             } else dateLinear.visibility = View.GONE
             clientId = id
-          //  requireActivity().showToast("id = $id + $name + $totalDebt")
         }
     }
 
-   private fun clientsSetUp() {
+    private fun clientsSetUp() {
         viewModel.progressLiveData.observe(viewLifecycleOwner, progressObserver)
         viewModel.errorCategoriesLiveData.observe(viewLifecycleOwner, errorClientsObserver)
         viewModel.connectionErrorLiveData.observe(viewLifecycleOwner, connectionErrorObserver)
         viewModel.successLiveData.observe(viewLifecycleOwner, successClientsObserver)
     }
 
-    fun handlerEvent(id: Int, name: String, unit: String) {
-        cardView.visibility = View.VISIBLE
-        sellTitle.visibility = View.VISIBLE
-        sellProductName.text = name
-        unitText.text = unit
-        productName = name
-        productId = id
+    fun handlerEvent(id: Int) {
+        sellViewModel.getProduct(id.toString())
     }
 
     fun TextChanged(editText: EditText) {
@@ -180,8 +244,8 @@ class MarketPage : Fragment(R.layout.product_sell_fragment) {
             override fun afterTextChanged(s: Editable) {}
 
             override fun beforeTextChanged(
-                s: CharSequence, start: Int,
-                count: Int, after: Int
+                    s: CharSequence, start: Int,
+                    count: Int, after: Int,
             ) {
             }
 
@@ -191,14 +255,13 @@ class MarketPage : Fragment(R.layout.product_sell_fragment) {
         })
     }
 
-   private fun setTotalPrice() {
+    @SuppressLint("SetTextI18n")
+    private fun setTotalPrice() {
         if (inputQuantity.text.toString().isNotEmpty() && inputPrice.text.toString().isNotEmpty()) {
             val quantity = inputQuantity.text.toString().toDouble()
             val price = inputPrice.text.toString().toDouble()
-            if (quantity > 0.0 && price > 0.0) totalPrice.text =
-                "%.1f".format(quantity * price) + " so'm"
+            if (quantity > 0.0 && price > 0.0)
+                totalPrice.text = "%.1f".format(quantity * (price - price * discountValue / 100)) + " so'm"
         } else totalPrice.text = ""
     }
-
-
 }

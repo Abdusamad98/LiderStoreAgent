@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.example.liderstoreagent.data.models.planmodel.PlanData
-import com.example.liderstoreagent.domain.repositories.PlanRepository
+import com.example.liderstoreagent.domain.repositories.repo.PlanRepository
 import com.example.liderstoreagent.domain.repositories.impl.PlanRepositoryImpl
 import com.example.liderstoreagent.domain.usecases.PlanUseCase
 import kotlinx.coroutines.flow.collect

@@ -21,6 +21,15 @@
         <action
             android:id="@+id/action_mainFragment_to_reportFragment"
             app:destination="@id/reportFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_reportsHistoryPage"
+            app:destination="@id/reportsHistoryPage" />
+        <action
+            android:id="@+id/action_mainFragment_to_addClientsPage"
+            app:destination="@id/addClientsPage" />
+        <action
+            android:id="@+id/action_mainFragment_to_clientProductsFragment"
+            app:destination="@id/clientProductsFragment" />
     </fragment>
 
     <fragment
@@ -80,4 +89,19 @@
         android:id="@+id/reportFragment"
         android:name="com.example.liderstoreagent.ui.screens.report.ReportFragment"
         android:label="ReportFragment" />
+    <fragment
+        tools:layout="@layout/history_reports_fragment"
+        android:id="@+id/reportsHistoryPage"
+        android:name="com.example.liderstoreagent.ui.screens.report.ReportsHistoryPage"
+        android:label="ReportsHistoryPage" />
+    <fragment
+        tools:layout="@layout/add_client_page"
+        android:id="@+id/addClientsPage"
+        android:name="com.example.liderstoreagent.ui.screens.AddClientsPage"
+        android:label="AddClientsPage" />
+    <fragment
+        tools:layout="@layout/client_products_fragment"
+        android:id="@+id/clientProductsFragment"
+        android:name="com.example.liderstoreagent.ui.screens.ClientProductsFragment"
+        android:label="ClientProductsFragment" />
 </navigation>

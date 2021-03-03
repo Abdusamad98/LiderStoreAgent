@@ -118,4 +118,13 @@ dependencies {
     implementation 'com.github.florent37:inline-activity-result-kotlin:1.0.4'
     implementation 'id.zelory:compressor:3.0.0'
 
+
+/**
+ *  GLIDE
+ */
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    //Location
+    implementation 'com.google.android.gms:play-services-location:18.0.0'
+
 }

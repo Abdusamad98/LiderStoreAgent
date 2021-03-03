@@ -12,19 +12,19 @@ import com.example.liderstoreagent.data.models.discountsmodel.DiscountedProduct
 import kotlinx.android.synthetic.main.discounted_item_product.view.*
 
 class DiscountedProductListAdapter :
-    ListAdapter<DiscountedProduct, DiscountedProductListAdapter.ViewHolder>(DiffItem) {
+        ListAdapter<DiscountedProduct, DiscountedProductListAdapter.ViewHolder>(DiffItem) {
 
     object DiffItem : DiffUtil.ItemCallback<DiscountedProduct>() {
         override fun areItemsTheSame(
-            oldItem: DiscountedProduct,
-            newItem: DiscountedProduct
+                oldItem: DiscountedProduct,
+                newItem: DiscountedProduct,
         ): Boolean {
             return oldItem.id == newItem.id
         }
 
         override fun areContentsTheSame(
-            oldItem: DiscountedProduct,
-            newItem: DiscountedProduct
+                oldItem: DiscountedProduct,
+                newItem: DiscountedProduct,
         ): Boolean {
             return oldItem.name == newItem.name &&
                     oldItem.quantity == newItem.quantity &&
@@ -34,18 +34,21 @@ class DiscountedProductListAdapter :
 
     }
 
+    private var clickListener: ((Int) -> Unit)? = null
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = ViewHolder(
-        LayoutInflater.from(parent.context).inflate(R.layout.discounted_item_product, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.discounted_item_product, parent, false)
     )
 
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
-        holder.bind(getItem(position))
+            holder.bind(getItem(position))
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         init {
             view.apply {
-
+                productSellDiscount.setOnClickListener {
+                    clickListener?.invoke(getItem(adapterPosition).id)
+                }
             }
         }
 
@@ -57,6 +60,10 @@ class DiscountedProductListAdapter :
                 discountedProductProvider.text = d.provider
             }
         }
+    }
+
+    fun clickedProduct(f : (Int )->Unit) {
+        clickListener = f
     }
 
 }

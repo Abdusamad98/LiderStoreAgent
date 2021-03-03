@@ -4,7 +4,7 @@ import com.example.liderstoreagent.data.models.clientmodel.ClientsData
 import com.example.liderstoreagent.data.source.local.TokenSaver
 import com.example.liderstoreagent.data.source.remote.retrofit.ApiClient
 import com.example.liderstoreagent.data.source.remote.retrofit.ClientsApiInterface
-import com.example.liderstoreagent.domain.repositories.ClientsRepository
+import com.example.liderstoreagent.domain.repositories.repo.ClientsRepository
 import com.example.liderstoreagent.utils.log
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

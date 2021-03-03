@@ -4,7 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.example.liderstoreagent.data.models.historymodel.SoldProductHistory
-import com.example.liderstoreagent.domain.repositories.SoldHistoryRepository
+import com.example.liderstoreagent.domain.repositories.repo.SoldHistoryRepository
 import com.example.liderstoreagent.domain.repositories.impl.SoldHistoryRepositoryImpl
 import com.example.liderstoreagent.domain.usecases.SoldHistoryUseCase
 import kotlinx.coroutines.flow.collect

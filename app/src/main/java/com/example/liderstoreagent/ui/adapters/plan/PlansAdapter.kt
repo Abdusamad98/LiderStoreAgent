@@ -11,7 +11,6 @@ import com.anychart.chart.common.dataentry.DataEntry
 import com.anychart.chart.common.dataentry.ValueDataEntry
 import com.example.liderstoreagent.R
 import com.example.liderstoreagent.data.models.planmodel.PlanData
-import kotlinx.android.synthetic.main.item_plan_details.view.*
 import kotlinx.android.synthetic.main.item_plans.view.*
 
 class PlansAdapter : ListAdapter<PlanData, PlansAdapter.ViewHolder>(DiffItem) {
@@ -55,11 +54,11 @@ class PlansAdapter : ListAdapter<PlanData, PlansAdapter.ViewHolder>(DiffItem) {
                 planItemDeadline.text = d.deadline
 
                 val pie = AnyChart.pie()
-                val arrayTitle = arrayOf<String>("Bajarildi","Bajarilmadi")
-                val arrayValue = arrayOf<Float>(d.percent.toFloat(),100f)
+                val arrayTitle = arrayOf<String>("Bajarildi", "Bajarilmadi")
+                val arrayValue = arrayOf<Float>(d.percent.toFloat(), 100f - d.percent.toFloat())
                 var list = ArrayList<DataEntry>()
-                list.add(ValueDataEntry(arrayTitle[0],arrayValue[0]))
-                list.add(ValueDataEntry(arrayTitle[1],arrayValue[1]))
+                list.add(ValueDataEntry(arrayTitle[0], arrayValue[0]))
+                list.add(ValueDataEntry(arrayTitle[1], arrayValue[1]))
                 pie.data(list)
                 anyChartView.setChart(pie)//--> XML id = anyChartView
 

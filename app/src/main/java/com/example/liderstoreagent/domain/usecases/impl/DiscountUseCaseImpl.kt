@@ -3,7 +3,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.example.liderstoreagent.data.models.discountsmodel.Discounts
-import com.example.liderstoreagent.domain.repositories.DiscountsRepository
+import com.example.liderstoreagent.domain.repositories.repo.DiscountsRepository
 import com.example.liderstoreagent.domain.repositories.impl.DiscountsRepositoryImpl
 import com.example.liderstoreagent.domain.usecases.DiscountsUseCase
 import kotlinx.coroutines.Dispatchers

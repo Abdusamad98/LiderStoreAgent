@@ -5,7 +5,7 @@ import com.example.liderstoreagent.data.models.salarymodel.SalaryData
 import com.example.liderstoreagent.data.source.local.TokenSaver
 import com.example.liderstoreagent.data.source.remote.retrofit.ApiClient
 import com.example.liderstoreagent.data.source.remote.retrofit.SalaryApiInterface
-import com.example.liderstoreagent.domain.repositories.SalaryRepository
+import com.example.liderstoreagent.domain.repositories.repo.SalaryRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 

@@ -1,11 +1,10 @@
 package com.example.liderstoreagent.domain.repositories.impl
 
 import com.example.liderstoreagent.data.models.planmodel.PlanDetail
-import com.example.liderstoreagent.data.models.sellmodel.SellProductResponse
 import com.example.liderstoreagent.data.source.local.TokenSaver
 import com.example.liderstoreagent.data.source.remote.retrofit.ApiClient
 import com.example.liderstoreagent.data.source.remote.retrofit.PlanDetailApiInterface
-import com.example.liderstoreagent.domain.repositories.PlanDetailRepository
+import com.example.liderstoreagent.domain.repositories.repo.PlanDetailRepository
 import com.example.liderstoreagent.utils.log
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

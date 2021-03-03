@@ -1,4 +1,4 @@
-package com.example.liderstoreagent.domain.repositories
+package com.example.liderstoreagent.domain.repositories.repo
 
 import com.example.liderstoreagent.data.models.salarymodel.SalaryData
 import com.example.liderstoreagent.data.models.sellmodel.SellProductResponse

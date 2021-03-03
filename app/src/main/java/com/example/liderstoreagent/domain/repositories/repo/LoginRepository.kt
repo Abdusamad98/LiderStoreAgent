@@ -1,4 +1,4 @@
-package com.example.liderstoreagent.domain.repositories
+package com.example.liderstoreagent.domain.repositories.repo
 
 import com.example.liderstoreagent.data.models.loginmodel.LoginData
 import com.example.liderstoreagent.data.models.loginmodel.LoginResponse

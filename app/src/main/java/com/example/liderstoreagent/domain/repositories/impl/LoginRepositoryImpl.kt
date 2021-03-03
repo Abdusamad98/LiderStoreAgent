@@ -6,7 +6,7 @@ import com.example.liderstoreagent.data.models.loginmodel.LoginResponse
 import com.example.liderstoreagent.data.source.local.TokenSaver
 import com.example.liderstoreagent.data.source.remote.retrofit.ApiClient
 import com.example.liderstoreagent.data.source.remote.retrofit.LoginApiInterface
-import com.example.liderstoreagent.domain.repositories.LoginRepository
+import com.example.liderstoreagent.domain.repositories.repo.LoginRepository
 import com.example.liderstoreagent.utils.log
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

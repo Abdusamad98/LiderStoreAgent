@@ -3,7 +3,7 @@ package com.example.liderstoreagent.domain.repositories.impl
 import com.example.liderstoreagent.data.models.discountsmodel.Discounts
 import com.example.liderstoreagent.data.source.remote.retrofit.ApiClient
 import com.example.liderstoreagent.data.source.remote.retrofit.DiscountsApiInterface
-import com.example.liderstoreagent.domain.repositories.DiscountsRepository
+import com.example.liderstoreagent.domain.repositories.repo.DiscountsRepository
 import com.example.liderstoreagent.utils.log
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

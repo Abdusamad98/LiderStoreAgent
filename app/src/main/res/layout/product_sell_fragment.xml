@@ -210,7 +210,37 @@
             </LinearLayout>
 
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="16dp"
+                android:visibility="gone"
+                android:id="@+id/discountLayout"
+                android:weightSum="100">
 
+
+                <Button
+                    android:layout_width="0dp"
+                    android:id="@+id/discountButton"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="70"
+                    android:text="Chegirmalar "
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+
+                <TextView
+                    android:id="@+id/discountText"
+                    android:layout_width="0dp"
+                    android:gravity="center"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="30"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
+
+
+            </LinearLayout>
 
 
             <LinearLayout
@@ -267,7 +297,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="16dp"
                 android:background="@drawable/back_of_enter"
-                android:text="Sotish"
+                android:text="Buyurtma olish"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 

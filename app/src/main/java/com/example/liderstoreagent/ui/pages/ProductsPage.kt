@@ -30,7 +30,7 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
     var productData: List<ProductData> = ArrayList()
 
     private var querySt = ""
-    private var eventListener: ((Int, String, String) -> Unit)? = null
+    private var eventListener: ((Int) -> Unit)? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -45,17 +45,18 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
             if (chosenCategory != 0) pageViewModel.getProducts(chosenCategory)
             Handler().postDelayed(Runnable {
                 refreshProducts.isRefreshing = false
-            }, 3000)
+            }, 1000)
         }
 
 
         searchByCategory.setOnClickListener {
             if (categories.isEmpty()) {
-                requireActivity().showToast("Internetni yoqing va refresh qiling!")
+                pageViewModel.getCategories()
             } else initCategoryChooseDialog(categories)
         }
-        productsAdapter.clickedProduct { id, name, unit ->
-            eventListener?.invoke(id, name, unit)
+
+        productsAdapter.clickedProduct { id ->
+            eventListener?.invoke(id)
         }
         val handler = Handler()
         searchProductView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -107,8 +108,12 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
 
     private val successCategoriesObserver = Observer<List<CategoryData>> { category ->
         categories = category as ArrayList<CategoryData>
-        pageViewModel.getProducts(categories[0].id)
-        chosenCategory = categories[0].id
+        if(chosenCategory!=0) pageViewModel.getProducts(chosenCategory)
+        else{
+            pageViewModel.getProducts(categories[0].id)
+            chosenCategory = categories[0].id
+        }
+
     }
 
     private val connectionErrorObserver = Observer<Unit> {
@@ -116,14 +121,14 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
     }
 
     fun categorySetUp() {
-          pageViewModel.progressCategoriesLiveData.observe(viewLifecycleOwner, progressObserver)
-        pageViewModel.errorCategoriesLiveData.observe(viewLifecycleOwner, errorCategoriesObserver)
+          pageViewModel.progressCategoriesLiveData.observe(this, progressObserver)
+        pageViewModel.errorCategoriesLiveData.observe(this, errorCategoriesObserver)
         pageViewModel.connectionErrorCategoriesLiveData.observe(
-            viewLifecycleOwner,
+            this,
             connectionErrorObserver
         )
         pageViewModel.successCategoriesLiveData.observe(
-            viewLifecycleOwner,
+            this,
             successCategoriesObserver
         )
     }
@@ -160,11 +165,10 @@ class ProductsPage : Fragment(R.layout.products_fragment) {
         dialog.setOnCategoryChosen { id ->
             chosenCategory = id
             pageViewModel.getProducts(id)
-           // requireActivity().showToast("id = $id")
         }
     }
 
-    fun eventListener(f: (Int, String, String) -> Unit) {
+    fun eventListener(f: (Int) -> Unit) {
         eventListener = f
     }
 

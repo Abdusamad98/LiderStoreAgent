@@ -1,4 +1,5 @@
 package com.example.liderstoreagent.ui.screens
+
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
@@ -9,10 +10,10 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.example.liderstoreagent.R
-import com.example.liderstoreagent.ui.adapters.MainPageAdapter
 import com.example.liderstoreagent.data.source.local.TokenSaver
-import com.example.liderstoreagent.utils.pageChangeListener
+import com.example.liderstoreagent.ui.adapters.MainPageAdapter
 import com.example.liderstoreagent.ui.viewmodels.HomeFragmentViewModel
+import com.example.liderstoreagent.utils.pageChangeListener
 import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.android.synthetic.main.main_nav.*
 
@@ -26,6 +27,10 @@ class HomeFragment : Fragment(R.layout.main_nav) {
         super.onViewCreated(view, savedInstanceState)
 
         agentName.setText("Agent ismi: " + TokenSaver.getFirstName())
+
+        addClient.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_addClientsPage)
+        }
 
         pager.adapter = adapter
         pager.pageChangeListener {
@@ -43,10 +48,11 @@ class HomeFragment : Fragment(R.layout.main_nav) {
             }
         }
 
-        adapter.eventListener { id, name, unit ->
+        adapter.eventListener { id  ->
             pager.currentItem = 3
-            adapter.marketPage.handlerEvent(id, name, unit)
+            adapter.marketPage.handlerEvent(id)
         }
+
         viewModel.selectPageLiveData.observe(viewLifecycleOwner, selectPageObserver)
 
         bottomNavigationView.setOnNavigationItemSelectedListener {
@@ -59,6 +65,7 @@ class HomeFragment : Fragment(R.layout.main_nav) {
             }
             return@setOnNavigationItemSelectedListener true
         }
+
         loadView()
     }
 
@@ -67,7 +74,9 @@ class HomeFragment : Fragment(R.layout.main_nav) {
         menu.setOnClickListener {
             drawerLayout.openDrawer(GravityCompat.START)
         }
+
         image.setOnClickListener { drawerLayout.closeDrawer(GravityCompat.START) }
+
         profile.setOnClickListener {
             drawerLayout.closeDrawer(GravityCompat.START)
             findNavController().navigate(R.id.action_mainFragment_to_profileFragment)
@@ -77,7 +86,7 @@ class HomeFragment : Fragment(R.layout.main_nav) {
             AlertDialog.Builder(requireContext())
                 .setTitle("Diqqat!")
                 .setMessage("Tizimdan chiqishni hohlaysizmi?")
-                .setNegativeButton("Yo'q"){dialog, _ ->
+                .setNegativeButton("Yo'q") { dialog, _ ->
                     dialog.cancel()
                 }
                 .setPositiveButton("Ha") { dialog, _ ->
@@ -91,8 +100,10 @@ class HomeFragment : Fragment(R.layout.main_nav) {
             drawerLayout.closeDrawer(GravityCompat.START)
         }
 
-
-
+        soldProductsByClients.setOnClickListener {
+            drawerLayout.closeDrawer(GravityCompat.START)
+            findNavController().navigate(R.id.action_mainFragment_to_clientProductsFragment)
+        }
 
         soldProducts.setOnClickListener {
             drawerLayout.closeDrawer(GravityCompat.START)
@@ -107,6 +118,11 @@ class HomeFragment : Fragment(R.layout.main_nav) {
         report.setOnClickListener {
             drawerLayout.closeDrawer(GravityCompat.START)
             findNavController().navigate(R.id.action_mainFragment_to_reportFragment)
+        }
+
+        historyReports.setOnClickListener {
+            drawerLayout.closeDrawer(GravityCompat.START)
+            findNavController().navigate(R.id.action_mainFragment_to_reportsHistoryPage)
         }
 
     }

@@ -4,7 +4,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.liveData
 import com.example.liderstoreagent.data.models.loginmodel.LoginData
 import com.example.liderstoreagent.data.models.loginmodel.LoginResponse
-import com.example.liderstoreagent.domain.repositories.LoginRepository
+import com.example.liderstoreagent.domain.repositories.repo.LoginRepository
 import com.example.liderstoreagent.domain.repositories.impl.LoginRepositoryImpl
 import com.example.liderstoreagent.domain.usecases.LoginUseCase
 import kotlinx.coroutines.Dispatchers

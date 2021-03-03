@@ -27,6 +27,7 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
     lateinit var discountsAdapter: DiscountedProductListAdapter
     var chosenDiscount = 0
     var discounts: List<Discounts> = ArrayList()
+    private var eventListener: ((Int) -> Unit)? = null
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -52,6 +53,8 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
                 refreshDiscounts.isRefreshing = false
             }, 2000)
         }
+
+
 
     }
 
@@ -120,6 +123,7 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
     }
     private val errorDiscountedProductsObserver = Observer<Unit> {
         requireActivity().showToast("Ulanishda xatolik!")
+        discountsProgressBar.visibility = View.GONE
     }
     private val connectionErrorDiscountedProductsObserver = Observer<Unit> {
         requireActivity().showToast("Internet yuq!")
@@ -157,5 +161,13 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
         discountsAdapter.submitList(data)
         recyclerDiscountedProducts.layoutManager = LinearLayoutManager(requireContext())
         recyclerDiscountedProducts.adapter = discountsAdapter
+
+        discountsAdapter.clickedProduct { id ->
+            eventListener?.invoke(id)
+        }
+    }
+
+    fun eventDiscountListener(f: (Int) -> Unit) {
+        eventListener = f
     }
 }

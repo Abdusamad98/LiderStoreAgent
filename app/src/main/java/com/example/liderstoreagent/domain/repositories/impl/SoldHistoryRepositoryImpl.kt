@@ -1,13 +1,10 @@
 package com.example.liderstoreagent.domain.repositories.impl
 
-import com.example.liderstoreagent.data.models.clientmodel.ClientsData
 import com.example.liderstoreagent.data.models.historymodel.SoldProductHistory
 import com.example.liderstoreagent.data.source.local.TokenSaver
 import com.example.liderstoreagent.data.source.remote.retrofit.ApiClient
-import com.example.liderstoreagent.data.source.remote.retrofit.ClientsApiInterface
 import com.example.liderstoreagent.data.source.remote.retrofit.SoldHistoryApi
-import com.example.liderstoreagent.domain.repositories.ClientsRepository
-import com.example.liderstoreagent.domain.repositories.SoldHistoryRepository
+import com.example.liderstoreagent.domain.repositories.repo.SoldHistoryRepository
 import com.example.liderstoreagent.utils.log
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow

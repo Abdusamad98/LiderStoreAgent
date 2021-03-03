@@ -19,7 +19,6 @@ import com.example.liderstoreagent.utils.showToast
 import com.github.dhaval2404.imagepicker.ImagePicker
 import kotlinx.android.synthetic.main.report_fragment.*
 import java.io.File
-import java.io.InputStream
 
 class ReportFragment : Fragment(R.layout.report_fragment) {
     private val viewModel: ReportViewModel by viewModels()
