@@ -19,10 +19,8 @@ class MainActivity : AppCompatActivity() {
         host = myNavHostFragment as NavHostFragment
         graph = host.navController.navInflater.inflate(R.navigation.navigation)
 
-        graph.startDestination = R.id.mainFragment
+        graph.startDestination = R.id.splashFragment
         host.navController.graph = graph
-
-
     }
 
 

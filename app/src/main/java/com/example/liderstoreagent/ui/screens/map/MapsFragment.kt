@@ -33,7 +33,6 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
 
     private val viewModel : MapViewModel by viewModels()
-
     private lateinit var centerLocation : LatLng
     private lateinit var fusedLocationClient: FusedLocationProviderClient
     private lateinit var locationCallback: LocationCallback
@@ -86,11 +85,7 @@ class MapsFragment : Fragment(R.layout.fragment_maps), OnMapReadyCallback {
     }
 
     private val editLocationObserver = Observer<String?> {
-        if (it != null) {
-            isEdit = true
-            val l = it.split(";")
-            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(LatLng(l[0].toDouble(), l[1].toDouble()),15.0f))
-        }
+
     }
     private val closeObserver = Observer<Unit> { findNavController().navigateUp() }
     private val fineUserLocationObserver = Observer<Location>{

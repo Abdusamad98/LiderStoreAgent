@@ -52,7 +52,7 @@ class ReportHistoryAdapter :
 
         fun bind(d: ReportHistory) {
             itemView.apply {
-                commentText.text = "Comment: ${d.comment}"
+                commentText.text = "Hisobot matni: ${d.comment}"
                 if (d.image != null) {
                     Glide.with(reportImage.context).load(Constants.BASE_URL + d.image)
                         .placeholder(R.drawable.ic_baseline_image_not_supported_24)

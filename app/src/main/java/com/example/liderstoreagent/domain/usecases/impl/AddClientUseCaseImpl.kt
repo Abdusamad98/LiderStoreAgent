@@ -14,9 +14,9 @@ class AddClientUseCaseImpl private constructor(): AddClientUseCase {
 
     private val repository: AddClientRepository = AddClientRepositoryImpl()
     override val errorAddClientLiveData = MutableLiveData<String>()
-    override val locationLiveData= MutableLiveData<String>()
+    override val locationLiveData= MutableLiveData<String?>()
 
-    override var locationSt: String
+    override var locationSt: String?
         get() = ""
         set(value) {
             locationLiveData.value = value

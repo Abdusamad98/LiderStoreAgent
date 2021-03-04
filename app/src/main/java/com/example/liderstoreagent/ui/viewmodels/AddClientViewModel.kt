@@ -16,8 +16,17 @@ class AddClientViewModel : ViewModel() {
     val progressLiveData = MutableLiveData<Boolean>()
     val connectionErrorLiveData = MutableLiveData<Unit>()
     val successLiveData = MediatorLiveData<Any>()
-    val locationLiveData = useCase.locationLiveData
+    val locationLiveData = MediatorLiveData<String>()
 
+    init {
+        val f = useCase.locationLiveData
+        locationLiveData.addSource(f) {
+            if (it != null) {
+                locationLiveData.value = it
+                useCase.locationSt = null
+            }
+        }
+    }
     fun addClient(addClientData: AddClientData) {
         if (isConnected()) {
             progressLiveData.value = true
@@ -32,6 +41,5 @@ class AddClientViewModel : ViewModel() {
         }
 
     }
-
 
 }

@@ -51,7 +51,7 @@ class ClientsPage : Fragment(R.layout.clients_fragment) {
             viewModel.getClients(chosenClientType)
             Handler().postDelayed(Runnable {
                 refreshClients.isRefreshing = false
-            }, 2000)
+            }, 1000)
         }
 
             val handler = Handler()

@@ -5,8 +5,8 @@ import com.example.liderstoreagent.data.models.clientmodel.AddClientData
 
 interface AddClientUseCase {
     val errorAddClientLiveData: LiveData<String>
-    var locationSt : String
-    val locationLiveData : LiveData<String>
+    var locationSt : String?
+    val locationLiveData : LiveData<String?>
     fun addClient(addClientData: AddClientData): LiveData<Any>
 }
 

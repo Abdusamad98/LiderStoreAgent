@@ -17,6 +17,8 @@ import com.example.liderstoreagent.ui.viewmodels.AddClientViewModel
 import com.example.liderstoreagent.utils.log
 import com.example.liderstoreagent.utils.showToast
 import com.github.dhaval2404.imagepicker.ImagePicker
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.model.LatLng
 import kotlinx.android.synthetic.main.add_client_page.*
 import java.io.File
 
@@ -37,6 +39,7 @@ class AddClientsPage : Fragment(R.layout.add_client_page) {
     private val viewModel: AddClientViewModel by viewModels()
 
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setUpReport()
@@ -58,10 +61,12 @@ class AddClientsPage : Fragment(R.layout.add_client_page) {
                     when (resultCode) {
                         Activity.RESULT_OK -> {
                             imageAddress = ImagePicker.getFile(data)!!
-                            requireContext().showToast("Rasm tanlandi!")
+                            requireContext().showToast("Rasm tanlandi")
                             log("$imageAddress", "RASM")
                             selectedImageClient.setImageURI(Uri.fromFile(imageAddress))
                             selectedImageClient.visibility = View.VISIBLE
+                            pickClientImage.text = "Rasm tanlandi"
+
                         }
                         else -> {
 
@@ -149,12 +154,20 @@ class AddClientsPage : Fragment(R.layout.add_client_page) {
         viewModel.errorAddClientLiveData.observe(this, errorAddClientObserver)
         viewModel.connectionErrorLiveData.observe(this, connectionErrorObserver)
         viewModel.successLiveData.observe(this, successObserver)
-        viewModel.locationLiveData.observe(this, locationObserver)
+        viewModel.locationLiveData.observe(viewLifecycleOwner, locationObserver)
     }
 
-    private val locationObserver = Observer<String> {
+    private val locationObserver = Observer<String?> {
+
         requireContext().showToast(it)
 
-    }
+        if (it != null) {
+            val l = it.split(";")
+            latitude = l[0].toDouble()
+            longitude = l[1].toDouble()
 
+            pickClientLocation.text = "Joy tanlandi"
+        }
+
+    }
 }
