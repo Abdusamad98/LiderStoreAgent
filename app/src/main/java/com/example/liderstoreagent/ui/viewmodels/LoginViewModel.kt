@@ -18,10 +18,6 @@ class LoginViewModel : ViewModel() {
     val connectionErrorLiveData = MutableLiveData<Unit>()
     val successLiveData = MediatorLiveData<LoginResponse>()
 
-    init {
-
-    }
-
     fun login(userName : String, password:String) {
         if(isConnected()){
             progressLiveData.value = true

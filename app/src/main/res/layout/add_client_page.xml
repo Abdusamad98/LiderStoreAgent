@@ -17,6 +17,22 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 
+
+    <TextView
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toRightOf="@+id/backToHomeAddClient"
+        android:layout_width="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/clientCard"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Xaridor qo'shish oynasi"
+        android:textColor="@color/colorPrimary"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+
+
     <androidx.cardview.widget.CardView
         android:id="@+id/clientCard"
         android:layout_width="match_parent"
@@ -40,17 +56,6 @@
                 android:layout_margin="8dp"
                 android:orientation="vertical">
 
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Xaridor qo'shish oynasi"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="24sp"
-                    android:textStyle="bold" />
-
-
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/InputLayout"
                     android:layout_width="match_parent"
@@ -63,6 +68,28 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Do'kon nomi"
+                        android:imeOptions="actionNext"
+                        android:singleLine="true"
+                        android:textColor="#000"
+                        android:textColorHint="#fff"
+                        android:textSize="18sp" />
+
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/InputLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="8dp"
+                    app:boxStrokeColor="@color/black">
+
+                    <EditText
+                        android:id="@+id/clientAddress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Manzili"
                         android:imeOptions="actionNext"
                         android:singleLine="true"
                         android:textColor="#000"
@@ -206,7 +233,7 @@
 
 
         <ProgressBar
-            android:id="@+id/reportProgressBar"
+            android:id="@+id/clientAddProgressBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -223,7 +250,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:background="@drawable/back_of_enter"
-        android:text="Yuborish"
+        android:text="Qo'shish"
         android:textColor="@color/white"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"

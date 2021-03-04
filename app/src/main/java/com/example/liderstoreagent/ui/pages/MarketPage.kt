@@ -78,7 +78,6 @@ class MarketPage : Fragment(R.layout.product_sell_fragment) {
                         )
                         sellViewModel.sellProduct(sellData)
                     } else requireActivity().showToast("Yaroqli miqdor yoki narxni kiriting!")
-
                 }
             }
         }

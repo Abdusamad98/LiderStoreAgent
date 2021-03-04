@@ -14,4 +14,5 @@ interface ReportApiInterface {
         @Part image:MultipartBody.Part?,
         @Part("sale_agent") agentId:Int
     ) : Response<Any>
+
 }

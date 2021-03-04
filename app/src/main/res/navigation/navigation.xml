@@ -98,10 +98,19 @@
         tools:layout="@layout/add_client_page"
         android:id="@+id/addClientsPage"
         android:name="com.example.liderstoreagent.ui.screens.AddClientsPage"
-        android:label="AddClientsPage" />
+        android:label="AddClientsPage" >
+        <action
+            android:id="@+id/action_addClientsPage_to_mapsFragment"
+            app:destination="@id/mapsFragment" />
+    </fragment>
     <fragment
         tools:layout="@layout/client_products_fragment"
         android:id="@+id/clientProductsFragment"
         android:name="com.example.liderstoreagent.ui.screens.ClientProductsFragment"
         android:label="ClientProductsFragment" />
+    <fragment
+        android:id="@+id/mapsFragment"
+        android:name="com.example.liderstoreagent.ui.screens.map.MapsFragment"
+        android:label="fragment_maps"
+        tools:layout="@layout/fragment_maps2" />
 </navigation>

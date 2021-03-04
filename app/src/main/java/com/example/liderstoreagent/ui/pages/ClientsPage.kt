@@ -47,12 +47,11 @@ class ClientsPage : Fragment(R.layout.clients_fragment) {
             initClientsChooseDialog()
         }
 
-
         refreshClients.setOnRefreshListener {
             viewModel.getClients(chosenClientType)
             Handler().postDelayed(Runnable {
                 refreshClients.isRefreshing = false
-            }, 3000)
+            }, 2000)
         }
 
             val handler = Handler()
