@@ -359,13 +359,13 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:gravity="center"
         android:textSize="22sp"
         android:textStyle="bold"
         android:textColor="#B71C1C"
+        android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="Avval mahsulotni \ntanlang!"
+        android:text="Mahsulot buyurtma qilish uchun avval mahsulotni tanlang!"
         android:layout_height="wrap_content"/>
 
 

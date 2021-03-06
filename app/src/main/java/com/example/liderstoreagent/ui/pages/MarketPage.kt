@@ -126,7 +126,11 @@ class MarketPage : Fragment(R.layout.product_sell_fragment) {
         sellProductName.text = response.product.name
         unitText.text = response.product.unit
         productName = response.product.name
-        totalAmount.text = response.product.quantity.toString() + " ${response.product.unit}"
+        if(response.product.product_type == "limited")
+            totalAmount.text = response.product.quantity.toString() + " ${response.product.unit}"
+        else  if(response.product.product_type == "unlimited"){
+            totalAmount.text = "Vip"
+        }
         productId = response.product.id
         discounts = response.discount
     }
