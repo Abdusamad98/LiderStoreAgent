@@ -35,8 +35,6 @@ class ClientListAdapter : ListAdapter<com.example.liderstoreagent.data.models.cl
         LayoutInflater.from(parent.context).inflate(R.layout.item_client, parent, false)
     )
 
-    private var listener_sell: ((Int) -> Unit)? = null
-
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
         holder.bind(getItem(position))
@@ -44,11 +42,6 @@ class ClientListAdapter : ListAdapter<com.example.liderstoreagent.data.models.cl
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         init {
             view.apply {
-
-//                sellProduct.setOnClickListener {
-//                    listener_sell?.invoke(adapterPosition)
-//                }
-//
 
             }
         }

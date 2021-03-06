@@ -3,9 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="16dp"
-    android:layout_margin="12dp">
+    android:layout_height="wrap_content">
 
 
     <LinearLayout
@@ -32,7 +30,8 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/listDiscounts"
         android:layout_width="wrap_content"
-        android:text="Ok"
+        android:text="Tasdiqlash"
+        android:layout_margin="8dp"
         android:id="@+id/discountButton"
         android:gravity="center"
         android:layout_height="wrap_content"/>

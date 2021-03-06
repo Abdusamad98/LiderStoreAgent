@@ -35,7 +35,7 @@ class ClientSearchListAdapter :
         LayoutInflater.from(parent.context).inflate(R.layout.item_search_client, parent, false)
     )
 
-    private var listenerClientData: ((Int, String, Int) -> Unit)? = null
+    private var listenerClientData: ((Int, String, Double) -> Unit)? = null
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) =
         holder.bind(getItem(position))
@@ -64,7 +64,7 @@ class ClientSearchListAdapter :
     }
 
 
-    fun setOnClientChosenListener(f: (Int, String, Int) -> Unit) {
+    fun setOnClientChosenListener(f: (Int, String, Double) -> Unit) {
         listenerClientData = f
     }
 

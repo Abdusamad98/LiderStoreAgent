@@ -67,7 +67,7 @@ class ClientProductsFragment : Fragment(R.layout.client_products_fragment) {
         if (list.isNotEmpty()) {
             clientId = list[0].client.id
             clientNameTitle.text = list[0].client.name
-            if (list[0].total_debt == 0) clientDebtTitle.text = "0"
+            if (list[0].total_debt == 0.0) clientDebtTitle.text = "0"
             else clientDebtTitle.text = list[0].total_debt.toString()
             pageViewModel.getClientProducts(clientId)
 
@@ -79,7 +79,7 @@ class ClientProductsFragment : Fragment(R.layout.client_products_fragment) {
         dialog.show()
         dialog.setOnClientChosen { id, name, totalDebt ->
             clientNameTitle.text = name
-            if (totalDebt == 0) clientDebtTitle.text = "0"
+            if (totalDebt == 0.0) clientDebtTitle.text = "0"
             else clientDebtTitle.text = totalDebt.toString()
             clientId = id
             pageViewModel.getClientProducts(clientId)

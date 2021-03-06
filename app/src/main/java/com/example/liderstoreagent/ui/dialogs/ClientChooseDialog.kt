@@ -16,7 +16,7 @@ class ClientChooseDialog(context: Context, clients: List<ClientsData>) :
     BaseDialog(context, R.layout.client_choose_dialog) {
 
     private var querySt = ""
-    private var listener: ((Int, String,Int) -> Unit)? = null
+    private var listener: ((Int, String,Double) -> Unit)? = null
     private var adapter = ClientSearchListAdapter()
 
 
@@ -85,7 +85,7 @@ class ClientChooseDialog(context: Context, clients: List<ClientsData>) :
         }
     }
 
-    fun setOnClientChosen(f: ((Int, String,Int) -> Unit)?) {
+    fun setOnClientChosen(f: ((Int, String,Double) -> Unit)?) {
         listener = f
     }
 }

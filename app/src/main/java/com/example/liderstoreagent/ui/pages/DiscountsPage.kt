@@ -110,7 +110,7 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
             discount.text = discount1
             discountViewModel.getDiscountedProducts(id1)
             chosenDiscount = id1
-            requireActivity().showToast("id = $id1")
+           // requireActivity().showToast("id = $id1")
         }
     }
 

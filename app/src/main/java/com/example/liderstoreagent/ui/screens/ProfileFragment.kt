@@ -3,6 +3,8 @@ package com.example.liderstoreagent.ui.screens
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
+import androidx.activity.OnBackPressedCallback
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
@@ -11,13 +13,22 @@ import com.example.liderstoreagent.R
 import com.example.liderstoreagent.data.models.salarymodel.SalaryData
 import com.example.liderstoreagent.data.source.local.TokenSaver
 import com.example.liderstoreagent.ui.viewmodels.SalaryViewModel
+import com.example.liderstoreagent.utils.log
 import com.example.liderstoreagent.utils.showToast
 import kotlinx.android.synthetic.main.profile_fragment.*
 
 class ProfileFragment : Fragment(R.layout.profile_fragment) {
     private val viewModel: SalaryViewModel by viewModels()
+
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+//        requireActivity().onBackPressedDispatcher.addCallback(this) {
+//           requireContext().showToast("SSS")
+//        }
+
         agent_firstname.text = TokenSaver.getFirstName()
         agent_lastname.text = TokenSaver.getLastName()
         agent_phone.text = TokenSaver.getLogin()
@@ -65,6 +76,8 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
         viewModel.successLiveData.observe(this, successHistoryObserver)
         viewModel.errorResponseLiveData.observe(this, errorSalaryObserver)
     }
+
+
 
 
 }

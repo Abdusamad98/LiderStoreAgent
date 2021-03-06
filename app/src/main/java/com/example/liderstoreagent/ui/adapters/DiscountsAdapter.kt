@@ -1,5 +1,6 @@
 package com.example.liderstoreagent.ui.adapters
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -34,13 +35,14 @@ class DiscountsAdapter(val data: List<Discount>) :
         }
 
 
+        @SuppressLint("SetTextI18n")
         fun bind() {
             val d = data[adapterPosition]
             itemView.apply {
                 isDiscountChosen.isEnabled = false
                 isDiscountChosen.isChecked = d.isChecked
                 discountText.text = d.name
-                discountAmount.text = d.discount.toString()
+                discountAmount.text = d.discount.toString() + "%"
             }
         }
     }

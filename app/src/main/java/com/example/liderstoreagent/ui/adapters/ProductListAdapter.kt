@@ -26,7 +26,10 @@ class ProductListAdapter : ListAdapter<ProductData, ProductListAdapter.ViewHolde
         override fun areContentsTheSame(oldItem: ProductData, newItem: ProductData): Boolean {
             return oldItem.name == newItem.name &&
                     oldItem.product_type == newItem.product_type &&
-                    oldItem.unit == newItem.unit
+                    oldItem.unit == newItem.unit&&
+                    oldItem.quantity == newItem.quantity&&
+                    oldItem.last_update == newItem.last_update&&
+                    oldItem.provider == newItem.provider
         }
 
     }
@@ -61,12 +64,13 @@ class ProductListAdapter : ListAdapter<ProductData, ProductListAdapter.ViewHolde
                 if (d.product_type.equals("limited")) {
                     productQuantity.text = d.quantity +" "+ d.unit
                     productStatus.text = "Vip emas"
+                    quantityLinear.visibility = View.VISIBLE
                     productStatus.setTextColor(Color.RED)
                 } else if (d.product_type.equals("unlimited")) {
                     quantityLinear.visibility = View.GONE
                     productStatus.text = "Vip"
+                    productStatus.setTextColor(Color.BLACK)
                 }
-
             }
         }
     }

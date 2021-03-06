@@ -20,6 +20,7 @@ import com.example.liderstoreagent.utils.log
 import com.example.liderstoreagent.utils.showToast
 import kotlinx.android.synthetic.main.clients_fragment.*
 
+
 @Suppress("DEPRECATION")
 class ClientsPage : Fragment(R.layout.clients_fragment) {
 

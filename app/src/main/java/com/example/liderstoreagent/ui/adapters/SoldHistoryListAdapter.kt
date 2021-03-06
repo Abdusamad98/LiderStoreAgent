@@ -60,7 +60,7 @@ class SoldHistoryListAdapter :
                 else soldItemName.text = d.product_name
 
                 soldItemClient.text = d.client
-                soldItemDate.text = d.created_date.substring(0, 10)
+                soldItemDate.text = d.created_date.substring(0, 10) +" "+ d.created_date.substring(11, 16)
                 soldItemPrice.text = d.price
                 soldItemQuantity.text = d.quantity
 

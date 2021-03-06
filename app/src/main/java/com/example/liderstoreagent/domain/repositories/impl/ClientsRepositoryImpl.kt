@@ -21,9 +21,8 @@ class ClientsRepositoryImpl : ClientsRepository {
 
         } catch (e: Exception) {
           //emit(Result.failure(e))
-            log("TTT", "exception = $e" + "Xatolik!")
+            log("TTTD", "exception = $e" + "Xatolik!")
         }
     }
-
 
 }
