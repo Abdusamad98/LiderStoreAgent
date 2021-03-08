@@ -50,7 +50,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="35"
-                android:text="Deadline:"
+                android:text="Muddat:"
                 android:textColor="@color/purple_700"
                 android:textSize="18sp" />
 

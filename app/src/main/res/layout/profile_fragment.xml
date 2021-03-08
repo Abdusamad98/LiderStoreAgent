@@ -34,7 +34,7 @@
             android:padding="4dp"
             android:text="Mening ma'lumotlarim"
             android:textColor="@color/purple_700"
-            android:textSize="28sp"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
 
@@ -162,7 +162,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Flexible maosh:"
+                android:text="Fix maosh:"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
 

@@ -13,8 +13,8 @@
         android:gravity="center"
         android:background="@drawable/discount_back"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="20sp"
-        android:padding="10dp"
+        android:textSize="18sp"
+        android:padding="8dp"
         android:text="Winter Discount"
         android:textColor="@color/white"
         android:layout_height="wrap_content"/>

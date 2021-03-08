@@ -21,9 +21,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Xaridor qo'shish oynasi"
+        android:text="Haridor qo'shish oynasi"
         android:textColor="@color/colorPrimary"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/clientCard"
         app:layout_constraintLeft_toRightOf="@+id/backToHomeAddClient"
@@ -35,7 +35,7 @@
         android:id="@+id/clientCard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="12dp"
+        android:layout_margin="4dp"
         android:elevation="5dp"
         app:cardCornerRadius="8dp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -51,14 +51,13 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
+                android:layout_margin="6dp"
                 android:orientation="vertical">
 
                 <com.google.android.material.textfield.TextInputLayout
                     style="@style/InputLayout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="8dp"
                     app:boxStrokeColor="@color/black">
 
                     <EditText
@@ -192,8 +191,8 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginBottom="16dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="6dp"
                     android:orientation="horizontal"
                     android:weightSum="100">
 
@@ -221,7 +220,7 @@
                     android:layout_width="300dp"
                     android:layout_height="300dp"
                     android:layout_gravity="center"
-                    android:layout_margin="16dp"
+                    android:layout_margin="8dp"
                     android:visibility="gone" />
 
             </LinearLayout>
@@ -251,7 +250,7 @@
         android:text="Qo'shish"
         android:textColor="@color/white"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 

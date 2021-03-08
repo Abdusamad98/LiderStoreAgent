@@ -142,7 +142,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Xaridor nomi:"
+                android:text="Haridor nomi:"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
 

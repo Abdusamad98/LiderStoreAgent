@@ -38,10 +38,10 @@
 
             <ImageView
                 android:contentDescription="Something"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:id="@+id/searchByCategory"
-                android:background="@drawable/ic_list"
+                android:background="@drawable/ic_baseline_list_24"
                 android:backgroundTint="@color/colorPrimaryDark" />
         </LinearLayout>
 

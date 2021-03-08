@@ -41,7 +41,7 @@
             android:padding="8dp"
             android:text="Barcha kilentlar"
             android:background="@drawable/dialog_back"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textColor="@color/white"
             android:layout_height="wrap_content"/>
 
@@ -53,7 +53,7 @@
             android:text="Qarzdor kilentlar"
             android:padding="8dp"
             android:background="@drawable/dialog_back"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textColor="@color/white"
             android:layout_height="wrap_content"/>
 

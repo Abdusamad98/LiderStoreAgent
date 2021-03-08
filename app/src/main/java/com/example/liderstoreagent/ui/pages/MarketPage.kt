@@ -50,7 +50,10 @@ class MarketPage : Fragment(R.layout.product_sell_fragment) {
         chooseClient.setOnClickListener {
             if (clientsData.isNotEmpty()) {
                 clientChosenChooseDialog(clientsData)
-            } else requireActivity().showToast("Xaridorlar listi bo'sh!")
+            } else {
+                viewModel.getClients("all")
+                requireActivity().showToast("Xaridorlar listi bo'sh!")
+            }
         }
 
         sellProduct.setOnClickListener {

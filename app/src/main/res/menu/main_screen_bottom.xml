@@ -3,10 +3,10 @@
     <item
         android:id="@+id/clients"
         android:icon="@drawable/ic_clients_icon"
-        android:title="Kilentar" />
+        android:title="Klientlar" />
     <item
         android:id="@+id/products"
-        android:icon="@drawable/ic_products"
+        android:icon="@drawable/ic_box"
         android:title="Mahsulotlar" />
 
     <item
@@ -17,6 +17,6 @@
 
     <item
         android:id="@+id/market"
-        android:icon="@drawable/ic_sell_icon"
+        android:icon="@drawable/ic_shopping"
         android:title="Sotish" />
 </menu>

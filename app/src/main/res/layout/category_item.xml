@@ -13,9 +13,10 @@
         android:gravity="center"
         android:background="@drawable/dialog_back"
         app:layout_constraintTop_toTopOf="parent"
-        android:textSize="28sp"
+        android:textSize="20sp"
+        android:padding="6dp"
         android:textColor="@color/white"
-        android:layout_height="50dp"/>
+        android:layout_height="wrap_content"/>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

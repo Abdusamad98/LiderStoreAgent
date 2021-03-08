@@ -42,6 +42,8 @@ class AddClientsPage : Fragment(R.layout.add_client_page) {
     @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        phoneNumber1.setText("+9989")
+
         setUpReport()
 
         backToHomeAddClient.setOnClickListener {
@@ -62,10 +64,9 @@ class AddClientsPage : Fragment(R.layout.add_client_page) {
                         Activity.RESULT_OK -> {
                             imageAddress = ImagePicker.getFile(data)!!
                             requireContext().showToast("Rasm tanlandi")
-                            log("$imageAddress", "RASM")
                             selectedImageClient.setImageURI(Uri.fromFile(imageAddress))
                             selectedImageClient.visibility = View.VISIBLE
-                            pickClientImage.text = "Rasm tanlandi"
+                            pickClientImage.text = "Rasm olindi"
 
                         }
                         else -> {

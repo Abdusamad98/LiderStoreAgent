@@ -73,7 +73,7 @@
                         android:layout_width="36dp"
                         android:layout_height="36dp"
                         android:padding="4dp"
-                        android:src="@drawable/ic_profile_icon" />
+                        android:src="@drawable/ic_user" />
 
                     <TextView
                         style="@style/TextView"
@@ -96,13 +96,14 @@
                     <ImageView
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:src="@drawable/ic_history"
+                        app:tint="#6e6e6e"
+                        android:src="@drawable/ic_list"
                         android:padding="4dp"/>
                     <TextView
                         style="@style/TextView"
                         android:layout_width="match_parent"
                         android:layout_marginLeft="12dp"
-                        android:text="Xaridorlar buyurtmasi"
+                        android:text="Haridorlar buyurtmasi"
                         android:textColor="#000"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -118,6 +119,7 @@
                     <ImageView
                         android:layout_width="36dp"
                         android:layout_height="36dp"
+                        app:tint="#6e6e6e"
                         android:padding="4dp"
                          />
 
@@ -144,6 +146,7 @@
                     <ImageView
                         android:layout_width="36dp"
                         android:layout_height="36dp"
+                        app:tint="#6e6e6e"
                         android:padding="4dp"
                         android:src="@drawable/ic__plan" />
 
@@ -168,8 +171,9 @@
                     <ImageView
                         android:layout_width="36dp"
                         android:layout_height="36dp"
+                        app:tint="#6e6e6e"
                         android:padding="4dp"
-                        android:src="@drawable/ic_history" />
+                        android:src="@drawable/ic_report_send" />
 
                     <TextView
                         style="@style/TextView"
@@ -194,6 +198,7 @@
                     <ImageView
                         android:layout_width="36dp"
                         android:layout_height="36dp"
+                        app:tint="#6e6e6e"
                         android:padding="4dp"
                         android:src="@drawable/ic_report" />
 
@@ -217,6 +222,7 @@
                     <ImageView
                         android:layout_width="36dp"
                         android:layout_height="36dp"
+                        app:tint="#6e6e6e"
                         android:padding="4dp"
                         android:src="@drawable/ic_log_out" />
 

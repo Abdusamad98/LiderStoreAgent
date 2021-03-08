@@ -26,7 +26,7 @@ class HomeFragment : Fragment(R.layout.main_nav) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        agentName.setText("Agent ismi: " + TokenSaver.getFirstName())
+        agentName.setText("Agent: " + TokenSaver.getFirstName())
 
         addClient.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_addClientsPage)
