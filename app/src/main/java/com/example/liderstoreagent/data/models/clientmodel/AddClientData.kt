@@ -11,6 +11,6 @@ class AddClientData(
         val latitude: Double,
         val longitude: Double,
         val image: File ,
-        val assumptionValue: Int,
+        val assumptionValue: Long,
         val agentId: Int,
 )

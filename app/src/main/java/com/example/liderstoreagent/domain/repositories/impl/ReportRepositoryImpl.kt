@@ -13,6 +13,7 @@ import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import okhttp3.RequestBody.Companion.asRequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
 
 
 class ReportRepositoryImpl : ReportRepository {
@@ -22,20 +23,27 @@ class ReportRepositoryImpl : ReportRepository {
 
         try {
             val response = if (data.image == null) {
+
+
+                val comment = data.comment.toRequestBody("text/plain".toMediaTypeOrNull())
                 api.sendReport(
-                    "application/json", data.comment,
+                    "application/json", comment,
                     null, data.sale_agent
                 )
+
             } else {
                 val image = Compressor.compress(App.instance, data.image)
                 // pass it like this
                 val requestFile: RequestBody =
                     image.asRequestBody("multipart/form-data".toMediaTypeOrNull())
-               // MultipartBody.Part is used to send also the actual file name
+                // MultipartBody.Part is used to send also the actual file name
                 val body: MultipartBody.Part =
                     MultipartBody.Part.createFormData("image", image.name, requestFile)
+
+                val comment = data.comment.toRequestBody("text/plain".toMediaTypeOrNull())
+
                 api.sendReport(
-                    "application/json", data.comment,
+                    "application/json", comment,
                     body, data.sale_agent
                 )
             }

@@ -32,7 +32,7 @@ class AddClientsPage : Fragment(R.layout.add_client_page) {
     var phone2 = ""
     private var longitude: Double = 0.0
     private var latitude: Double = 0.0
-    var supposedAmount = 0
+    var supposedAmount = 0L
     var imageAddress: File? = null
 
 
@@ -87,8 +87,9 @@ class AddClientsPage : Fragment(R.layout.add_client_page) {
             repsonsiblePerson = responsiblePerson.text.toString()
             phone1 = phoneNumber1.text.toString()
             phone2 = phoneNumber2.text.toString()
+
             if (assumptionValue.text.toString().isNotEmpty()) supposedAmount =
-                assumptionValue.text.toString().toInt()
+                assumptionValue.text.toString().toLong()
 
             if (inputMarketName.isEmpty()) {
                 marketName.error = "Haridor tomon nomi"
@@ -109,10 +110,10 @@ class AddClientsPage : Fragment(R.layout.add_client_page) {
                     inputMarketName,
                     address,
                     repsonsiblePerson,
-                    phone1,
-                    phone2,
-                    longitude,
+                    phoneNumber1.text.toString(),
+                    phoneNumber2.text.toString(),
                     latitude,
+                    longitude,
                     imageAddress!!,
                     supposedAmount,
                     TokenSaver.getAgentId()
@@ -140,13 +141,16 @@ class AddClientsPage : Fragment(R.layout.add_client_page) {
     }
 
     private val successObserver = Observer<Any> {
-        AlertDialog.Builder(requireContext())
-            .setTitle("Diqqat!")
-            .setMessage("Diqqat haridor ma'lumotlari yuborildi!")
-            .setPositiveButton("Ok") { dialog, _ ->
-                findNavController().navigateUp()
-                dialog.cancel()
-            }.show()
+        if(it==true){
+            AlertDialog.Builder(requireContext())
+                .setTitle("Diqqat!")
+                .setMessage("Diqqat haridor ma'lumotlari yuborildi!")
+                .setPositiveButton("Ok") { dialog, _ ->
+                    findNavController().navigateUp()
+                    dialog.cancel()
+                }.show()
+        }
+        else requireActivity().showToast("Xato... Telefon nomerini to'g'ri kiriting!")
     }
 
     @SuppressLint("FragmentLiveDataObserve")
@@ -164,8 +168,8 @@ class AddClientsPage : Fragment(R.layout.add_client_page) {
 
         if (it != null) {
             val l = it.split(";")
-            latitude = l[0].toDouble()
-            longitude = l[1].toDouble()
+            latitude = l[0].toDouble()//41
+            longitude = l[1].toDouble()//69
 
             pickClientLocation.text = "Joy tanlandi"
         }

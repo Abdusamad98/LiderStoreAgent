@@ -96,7 +96,7 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
             discountName.text = discounts[0].name
             discount.text = discounts[0].discount.toString() + " %"
             if (discounts[0].deadline.equals(null)) deadline.text = "Noma'lum" else deadline.text =
-                discounts[0].deadline.toString()//.substring(0,10)
+                discounts[0].deadline.toString().substring(0,10)
         }
     }
 
@@ -110,7 +110,6 @@ class DiscountsPage : Fragment(R.layout.discounts_fragment) {
             discount.text = discount1
             discountViewModel.getDiscountedProducts(id1)
             chosenDiscount = id1
-           // requireActivity().showToast("id = $id1")
         }
     }
 
