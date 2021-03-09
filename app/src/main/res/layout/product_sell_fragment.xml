@@ -12,7 +12,7 @@
         android:gravity="center"
         android:textStyle="bold"
         android:padding="8dp"
-        android:text="SOTILAYOTGAN MAHSULOT MA'LUMOTLARI!"
+        android:text="@string/sotilayotgan_mahsulot_ma_lumotlari"
         android:textColor="@color/purple_700"
         android:textSize="16sp"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -342,7 +342,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:background="@drawable/back_of_enter"
-        android:text="Buyurtma olish"
+        android:text="@string/buyurtma_olish"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         android:textSize="18sp" />
@@ -359,13 +359,13 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:textSize="22sp"
+        android:textSize="20sp"
         android:textStyle="bold"
         android:textColor="#B71C1C"
         android:gravity="center"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:text="Mahsulot buyurtma qilish uchun avval mahsulotni tanlang!"
+        android:text="@string/mahsulot_buyurtma_qilish_uchun_avval_mahsulotni_tanlang"
         android:layout_height="wrap_content"/>
 
 

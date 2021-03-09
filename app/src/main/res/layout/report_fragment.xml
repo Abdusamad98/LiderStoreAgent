@@ -42,9 +42,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Hisobot berish"
+                    android:text="@string/hisobot_berish"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="28sp"
+                    android:textSize="24sp"
                     android:textStyle="bold" />
 
 
@@ -76,7 +76,7 @@
                     android:id="@+id/pickImage"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="16dp"
-                    android:text="Rasm tanlash" />
+                    android:text="@string/rasm_tanlash" />
 
 
 
@@ -95,7 +95,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/back_of_enter"
-                    android:text="Yuborish"
+                    android:text="@string/yuborish"
                     android:layout_marginBottom="25dp"
                     android:textColor="@color/white"
                     android:textSize="18sp" />

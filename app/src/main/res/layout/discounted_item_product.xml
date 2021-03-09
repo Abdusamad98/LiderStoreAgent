@@ -28,7 +28,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Mahsulot nomi:"
+                android:text="@string/mahsulot_nomi"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
 
@@ -57,9 +57,9 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="32dp"
                 android:layout_weight="40"
-                android:text="Miqdori:"
+                android:text="@string/miqdori"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
 
@@ -88,7 +88,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Ta'minotchi:"
+                android:text="@string/ta_minotchi"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
 
@@ -131,7 +131,7 @@
 
                 <TextView
                     android:layout_width="wrap_content"
-                    android:text="Sotish"
+                    android:text="@string/sotish"
                     android:paddingTop="6dp"
                     android:textSize="18sp"
                     android:textStyle="bold"

@@ -28,7 +28,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Haridor nomi:"
+                android:text="@string/haridor_nomi"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
 
@@ -57,7 +57,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Manzili:"
+                android:text="@string/manzili"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
 
@@ -86,7 +86,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Ma'sul shaxs:"
+                android:text="@string/ma_sul_shaxs"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
 
@@ -115,7 +115,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Telefon raqami:"
+                android:text="@string/telefon_raqami"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
 
@@ -145,7 +145,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Qarzdorlik:"
+                android:text="@string/qarzdorlik"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp" />
 

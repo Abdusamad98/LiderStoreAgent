@@ -32,9 +32,9 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="4dp"
-            android:text="Mening ma'lumotlarim"
+            android:text="@string/mening_ma_lumotlarim"
             android:textColor="@color/purple_700"
-            android:textSize="22sp"
+            android:textSize="20sp"
             android:textStyle="bold" />
 
 

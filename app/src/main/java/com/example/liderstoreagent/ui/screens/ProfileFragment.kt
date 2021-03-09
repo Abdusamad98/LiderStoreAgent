@@ -25,10 +25,6 @@ class ProfileFragment : Fragment(R.layout.profile_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        requireActivity().onBackPressedDispatcher.addCallback(this) {
-//           requireContext().showToast("SSS")
-//        }
-
         agent_firstname.text = TokenSaver.getFirstName()
         agent_lastname.text = TokenSaver.getLastName()
         agent_phone.text = TokenSaver.getLogin()

@@ -28,7 +28,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Mahsulot nomi:"
+                android:text="@string/mahsulot_nomi"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp" />
 
@@ -56,7 +56,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Statusi:"
+                android:text="@string/statusi"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp" />
 
@@ -83,7 +83,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Plan miqdori:"
+                android:text="@string/plan_miqdori"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp" />
 
@@ -112,7 +112,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="40"
-                android:text="Bajarilgani:"
+                android:text="@string/bajarilgani"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18sp" />
 

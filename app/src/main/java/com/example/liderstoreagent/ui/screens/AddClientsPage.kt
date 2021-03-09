@@ -91,7 +91,7 @@ class AddClientsPage : Fragment(R.layout.add_client_page) {
                 assumptionValue.text.toString().toInt()
 
             if (inputMarketName.isEmpty()) {
-                marketName.error = "Xaridor tomon nomi"
+                marketName.error = "Haridor tomon nomi"
             } else if (address.isEmpty()) {
                 clientAddress.error = "Manzili"
             } else if (repsonsiblePerson.isEmpty()) {
@@ -142,7 +142,7 @@ class AddClientsPage : Fragment(R.layout.add_client_page) {
     private val successObserver = Observer<Any> {
         AlertDialog.Builder(requireContext())
             .setTitle("Diqqat!")
-            .setMessage("Diqqat xaridor ma'lumotlari yuborildi!")
+            .setMessage("Diqqat haridor ma'lumotlari yuborildi!")
             .setPositiveButton("Ok") { dialog, _ ->
                 findNavController().navigateUp()
                 dialog.cancel()

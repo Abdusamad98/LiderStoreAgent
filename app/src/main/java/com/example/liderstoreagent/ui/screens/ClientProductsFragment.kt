@@ -41,7 +41,7 @@ class ClientProductsFragment : Fragment(R.layout.client_products_fragment) {
         searchByClient.setOnClickListener {
             if (clientsData.isNotEmpty()) {
                 clientChosenChooseDialog(clientsData)
-            } else requireActivity().showToast("Xaridorlar listi topilmadi!")
+            } else requireActivity().showToast("Haridorlar listi topilmadi!")
         }
 
     }

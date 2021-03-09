@@ -79,7 +79,7 @@
                         style="@style/TextView"
                         android:layout_width="match_parent"
                         android:layout_marginLeft="12dp"
-                        android:text="Mening profilim"
+                        android:text="@string/mening_profilim"
                         android:textColor="#000"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -103,7 +103,7 @@
                         style="@style/TextView"
                         android:layout_width="match_parent"
                         android:layout_marginLeft="12dp"
-                        android:text="Haridorlar buyurtmasi"
+                        android:text="@string/haridorlar_buyurtmasi"
                         android:textColor="#000"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -127,7 +127,7 @@
                         style="@style/TextView"
                         android:layout_width="match_parent"
                         android:layout_marginLeft="12dp"
-                        android:text="Barcha buyurtmalar"
+                        android:text="@string/barcha_buyurtmalar"
                         android:textColor="#000"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -154,7 +154,7 @@
                         style="@style/TextView"
                         android:layout_width="match_parent"
                         android:layout_marginLeft="12dp"
-                        android:text="Reja"
+                        android:text="@string/reja"
                         android:textColor="#000"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -179,7 +179,7 @@
                         style="@style/TextView"
                         android:layout_width="match_parent"
                         android:layout_marginLeft="12dp"
-                        android:text="Hisobotlar"
+                        android:text="@string/hisobotlar"
                         android:textColor="#000"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -206,7 +206,7 @@
                         style="@style/TextView"
                         android:layout_width="match_parent"
                         android:layout_marginLeft="12dp"
-                        android:text="Hisobot yuborish"
+                        android:text="@string/hisobot_yuborish"
                         android:textColor="#000"
                         android:textSize="16sp" />
                 </LinearLayout>
@@ -230,7 +230,7 @@
                         style="@style/TextView"
                         android:layout_width="match_parent"
                         android:layout_marginLeft="12dp"
-                        android:text="Chiqish"
+                        android:text="@string/chiqish"
                         android:textColor="#000"
                         android:textSize="16sp" />
                 </LinearLayout>

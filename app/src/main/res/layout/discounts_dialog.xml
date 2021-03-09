@@ -16,7 +16,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:gravity="center"
         android:textSize="20sp"
-        android:text="Chegirmani tanlang!"
+        android:text="@string/chegirmani_tanlang"
         android:layout_height="wrap_content"/>
 
 

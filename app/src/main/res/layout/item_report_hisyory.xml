@@ -47,7 +47,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="40"
-                    android:text="Sanasi:"
+                    android:text="@string/sanasi"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
 
@@ -72,7 +72,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Hisobot matni"
+                    android:text="@string/hisobot_matni"
                     android:textColor="@color/colorPrimary"
                     android:textSize="16sp" />
 

@@ -26,7 +26,7 @@
             app:closeIcon="@drawable/ic_search_cancel"
             app:iconifiedByDefault="false"
             app:queryBackground="@android:color/transparent"
-            app:queryHint="Search ..."
+            app:queryHint="@string/search_hint"
             app:searchIcon="@drawable/ic_baseline_search"
             app:showDividers="middle" />
 
@@ -43,7 +43,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/searchClientLinear"
         android:layout_width="wrap_content"
-        android:text="cancel"
+        android:text="@string/cancel"
         android:id="@+id/cancelClientSearch"
         android:gravity="center"
         android:layout_height="wrap_content"/>

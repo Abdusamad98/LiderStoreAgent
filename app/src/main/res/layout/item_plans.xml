@@ -50,7 +50,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="35"
-                android:text="Muddat:"
+                android:text="@string/muddat"
                 android:textColor="@color/purple_700"
                 android:textSize="18sp" />
 
@@ -68,7 +68,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="30"
-                android:text="Batafsil"
+                android:text="@string/batafsil"
                 android:gravity="center"
                 android:textColor="@color/purple_700"
                 android:textSize="18sp" />

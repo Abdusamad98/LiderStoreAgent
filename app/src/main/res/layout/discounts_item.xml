@@ -15,7 +15,6 @@
         app:layout_constraintTop_toTopOf="parent"
         android:textSize="18sp"
         android:padding="8dp"
-        android:text="Winter Discount"
         android:textColor="@color/white"
         android:layout_height="wrap_content"/>
 

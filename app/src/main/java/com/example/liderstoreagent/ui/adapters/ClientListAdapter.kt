@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.liderstoreagent.R
 import com.example.liderstoreagent.utils.spannableText
 import kotlinx.android.synthetic.main.item_client.view.*
-import kotlinx.android.synthetic.main.item_products.view.*
 
 class ClientListAdapter : ListAdapter<com.example.liderstoreagent.data.models.clientmodel.ClientsData, ClientListAdapter.ViewHolder>(DiffItem) {
 
@@ -24,7 +23,7 @@ class ClientListAdapter : ListAdapter<com.example.liderstoreagent.data.models.cl
         override fun areContentsTheSame(oldItem: com.example.liderstoreagent.data.models.clientmodel.ClientsData, newItem: com.example.liderstoreagent.data.models.clientmodel.ClientsData): Boolean {
             return oldItem.client.name == newItem.client.name &&
                     oldItem.client.responsible_agent == newItem.client.responsible_agent &&
-                    oldItem.client.phone == newItem.client.phone  &&
+                    oldItem.client.phone_number1 == newItem.client.phone_number1  &&
                     oldItem.client.address == newItem.client.address &&
                     oldItem.total_debt == newItem.total_debt
         }
@@ -54,7 +53,7 @@ class ClientListAdapter : ListAdapter<com.example.liderstoreagent.data.models.cl
 
                 client_address.text = d.client.address
                 responsible_agent.text = d.client.responsible_agent
-                phone.text = d.client.phone
+                phone.text = d.client.phone_number1
                 debt.text = d.total_debt.toString()
 
                 if (d.total_debt > 0) {

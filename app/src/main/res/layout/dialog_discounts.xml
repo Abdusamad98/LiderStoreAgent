@@ -30,7 +30,7 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/listDiscounts"
         android:layout_width="wrap_content"
-        android:text="Tasdiqlash"
+        android:text="@string/tasdiqlash"
         android:layout_margin="8dp"
         android:id="@+id/discountButton"
         android:gravity="center"

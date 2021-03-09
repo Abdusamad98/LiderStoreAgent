@@ -24,7 +24,7 @@ class ClientSearchListAdapter :
         override fun areContentsTheSame(oldItem: ClientsData, newItem: ClientsData): Boolean {
             return oldItem.client.name == newItem.client.name &&
                     oldItem.client.responsible_agent == newItem.client.responsible_agent &&
-                    oldItem.client.phone == newItem.client.phone &&
+                    oldItem.client.phone_number1 == newItem.client.phone_number1 &&
                     oldItem.client.address == newItem.client.address &&
                     oldItem.total_debt == newItem.total_debt
         }

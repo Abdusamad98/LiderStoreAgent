@@ -52,7 +52,7 @@ class MarketPage : Fragment(R.layout.product_sell_fragment) {
                 clientChosenChooseDialog(clientsData)
             } else {
                 viewModel.getClients("all")
-                requireActivity().showToast("Xaridorlar listi bo'sh!")
+                requireActivity().showToast("Haridorlar listi bo'sh!")
             }
         }
 
@@ -64,7 +64,7 @@ class MarketPage : Fragment(R.layout.product_sell_fragment) {
                 inputPrice.text.toString().isEmpty() -> {
                     inputPrice.error = "Narxini kiriting!"
                 }
-                clientName.text.isEmpty() -> requireActivity().showToast("Xaridorni tanlang!")
+                clientName.text.isEmpty() -> requireActivity().showToast("Haridorni tanlang!")
                 else -> {
                     val quantity = inputQuantity.text.toString().toDouble()
                     val price = inputPrice.text.toString().toDouble()
