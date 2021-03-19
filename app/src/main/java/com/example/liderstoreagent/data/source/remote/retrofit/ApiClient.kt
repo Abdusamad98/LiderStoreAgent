@@ -1,5 +1,6 @@
 package com.example.liderstoreagent.data.source.remote.retrofit
 import com.example.liderstoreagent.app.App
+import com.example.liderstoreagent.utils.Constants.Companion.BASE_URL
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.readystatesoftware.chuck.ChuckInterceptor
 import okhttp3.OkHttpClient
@@ -8,7 +9,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiClient {
-    private const val BASE_URL = "https://ferzu-warehouse.herokuapp.com/api/"
+
 
     val retrofit: Retrofit = Retrofit.Builder()
         .baseUrl(BASE_URL)

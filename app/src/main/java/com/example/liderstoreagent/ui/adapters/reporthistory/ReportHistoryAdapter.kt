@@ -55,7 +55,7 @@ class ReportHistoryAdapter :
                 commentText.text = d.comment
                 reportDate.text = d.created_date.substring(0, 10) +" "+ d.created_date.substring(11, 16)
                 if (d.image != null) {
-                    Glide.with(reportImage.context).load(Constants.BASE_URL + d.image)
+                    Glide.with(reportImage.context).load(Constants.BASE_URL_FOR_GLIDE + d.image)
                         .placeholder(R.drawable.ic_baseline_image_not_supported_24)
                         .into(reportImage)
                 }
